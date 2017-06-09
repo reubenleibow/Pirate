@@ -12,18 +12,21 @@ public class Base_Character_Script : MonoBehaviour
 	float Base_Speed = 10;
 	int Base_MaxRange = 4;
 	string Base_Faction;
+	public int Base_Kills = 0;
 	
 	int TeamSide;
 	public readonly bool targeted = false;
 	public GameObject Enemy;
 	public readonly string CharacterState;
 	public float DistanceEnemy;
+	public GameObject LastTouch = null;
 
 	GameObject Core_Character;
 
 	// Use this for initialization
 	void Start()
 	{
+		MainBattle_Script.System.AllCharacters.Add(Core_Character);
 		if(TeamSide == 1)
 		{
 			MainBattle_Script.System.Team1.Add(Core_Character);
@@ -64,5 +67,10 @@ public class Base_Character_Script : MonoBehaviour
 	void Attack()
 	{
 
+	}
+
+	void Death()
+	{
+		MainBattle_Script.System.AllDeath.Add(Core_Character);
 	}
 }

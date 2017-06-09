@@ -9,6 +9,8 @@ public class MainBattle_Script : MonoBehaviour
 	public readonly List<GameObject> Team2;
 	public readonly List<GameObject> PendingTeam1;
 	public readonly List<GameObject> PendingTeam2;
+	public readonly List<GameObject> AllCharacters;
+	public readonly List<GameObject> AllDeath;
 
 	public static MainBattle_Script System { get; private set; }
 
@@ -18,6 +20,8 @@ public class MainBattle_Script : MonoBehaviour
 		Team2 = new List<GameObject>();
 		PendingTeam1 = new List<GameObject>();
 		PendingTeam2 = new List<GameObject>();
+		AllCharacters = new List<GameObject>();
+		AllDeath = new List<GameObject>();
 
 		MainBattle_Script.System = this;
 
@@ -72,10 +76,12 @@ public class MainBattle_Script : MonoBehaviour
 				}
 				PendingTeam1.Remove(man1);
 			}
-
-
-			//For Team 2-----------------------------------------
-
+		}
+		//For Team 2-----------------------------------------
+		if(PendingTeam2.Count > 0)
+		{
+			var shortDist = 9999f;
+			var shortDistNon = 9999f;
 			foreach (GameObject man2 in PendingTeam2)
 			{
 				foreach (GameObject man1 in Team1)
@@ -107,11 +113,30 @@ public class MainBattle_Script : MonoBehaviour
 					{
 						man2.GetComponent<Base_Character_Script>().Enemy = target;
 					}
-
 				}
 				PendingTeam1.Remove(man2);
 			}
-
+		}
+		//if there is a death
+		if(AllDeath.Count > 0)
+		{
+			foreach(GameObject death in AllDeath)
+			{
+				foreach(GameObject men in AllCharacters)
+				{
+					//if the man that died was last hit by a man then that man gets a kill
+					if(death.GetComponent<Base_Character_Script>().LastTouch == men)
+					{
+						men.GetComponent<Base_Character_Script>().Base_Kills++;
+					}
+					//if a man has Enemy == man that just died then set null
+					if(men.GetComponent<Base_Character_Script>().Enemy == death)
+					{
+						men.GetComponent<Base_Character_Script>().Enemy = null;
+					}
+				}
+				AllDeath.Remove(death);
+			}
 		}
 	}
 }
