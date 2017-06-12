@@ -31,13 +31,11 @@ public class MainBattle_Script : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		Debug.Log("Preplist");
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		Debug.Log("UpdatePreplist");
 		if (PendingTeam1.Count > 0 && Team2.Count > 0)
 		{
 			SortPlayers(PendingTeam1, Team2);
