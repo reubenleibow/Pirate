@@ -10,14 +10,17 @@ public class Base_Character_Script : MonoBehaviour
 	float DifficaultyModifier = 1;
 
 	int Base_Health = 100;
-	bool Base_Ranged = true;
-	bool Base_Melee = true;
+	DatabaseInventoryItem Base_Ranged;
+	DatabaseInventoryItem Base_Melee;
 	bool Base_HorseBack = false;
 	float Base_Speed = 10;
 	int Base_MaxRange = 4;
 	string Base_Faction;
 	public int Base_Kills = 0;
 	List<Items_Script> Inventory = new List<Items_Script>(GameDatabase.MaxInventorySize);
+
+	// load the properties
+	characterProperties Base_Propeties = new characterProperties();
 
 	public int TeamSide;
 	public bool targeted = false;
@@ -51,6 +54,9 @@ public class Base_Character_Script : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		//Test***********************
+		AddItem("Bow", 1);
+		AddItem("Sword", 1);
 		MainBattle_Script.System.AllCharacters.Add(this);
 		if (TeamSide == 1)
 		{
@@ -69,6 +75,21 @@ public class Base_Character_Script : MonoBehaviour
 
 		TeamSideList.Add(this);
 		PendingSideList.Add(this);
+
+		foreach(var cItem in Inventory)
+		{
+			var explainedItem = GameDatabase.InventoryItems[cItem.Name];
+
+			if(explainedItem.WChasis == WeaponChasis.Ranged)
+			{
+				Base_Ranged = explainedItem;
+			}
+
+			if (explainedItem.WChasis == WeaponChasis.SingleHandMelee || explainedItem.WChasis == WeaponChasis.DoubleHandedWeapon)
+			{
+				Base_Melee = explainedItem;
+			}
+		}
 	}
 
 	// Update is called once per frame
@@ -83,10 +104,14 @@ public class Base_Character_Script : MonoBehaviour
 
 		//work out dist from enemy
 
-		if (Enemy != null && ForceStop == false)
+		if (Enemy != null)
 		{
 			DistanceEnemy = Vector3.Distance(this.Core_Character.transform.position, Enemy.Core_Character.transform.position);
-			NavMesh.SetDestination(Enemy.transform.position);
+			//test***************************
+			if(ForceStop == false && CurrentWeaponChasis != WeaponChasis.Ranged)
+			{
+				NavMesh.SetDestination(Enemy.transform.position);
+			}
 		}
 		else
 		{
@@ -100,17 +125,28 @@ public class Base_Character_Script : MonoBehaviour
 		//enemy in range
 		if (InRange)
 		{
-			Attack();
+			//Attack();
 
 			//when character must remain still
 			x = x || (CurrentWeaponChasis == WeaponChasis.Ranged || Dead);
 		}
-
+		if(DistanceEnemy < Base_Propeties.MinBowRange && CurrentWeaponChasis == WeaponChasis.Ranged)
+		{
+			if(Base_Melee != null)
+			{
+				CurrentWeaponChasis = Base_Melee.WChasis;
+			}
+		}
+		//aDD aMMO CHECK HERE********************************
+		if(Base_Ranged != null && DistanceEnemy > Base_Propeties.MinStartRanged)
+		{
+			CurrentWeaponChasis = WeaponChasis.Ranged;
+		}
 
 		ForceStop = x;
 
-		//stop all movement if force stop is true
-		if (ForceStop)
+		//stop all movement if force stop is true**************************
+		if (ForceStop || CurrentWeaponChasis == WeaponChasis.Ranged)
 		{
 			NavMesh.Stop();
 			NavMesh.ResetPath();

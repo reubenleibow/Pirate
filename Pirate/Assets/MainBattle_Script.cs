@@ -40,7 +40,7 @@ public class MainBattle_Script : MonoBehaviour
 		{
 			SortPlayers(PendingTeam1, Team2);
 		}
-		//For Team 2-----------------------------------------
+		//For Team 2
 		if (PendingTeam2.Count > 0 && Team1.Count > 0)
 		{
 			SortPlayers(PendingTeam2, Team1);
