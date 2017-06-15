@@ -11,7 +11,7 @@ public enum WeaponChasis
 	Ammo
 
 }
-
+//grouping items eg: bow and arrow types will be under arrow
 public enum Chasis
 {
 	Ammo,
@@ -28,24 +28,26 @@ public enum Chasis
 // database items
 public class DatabaseInventoryItem
 {
-	public DatabaseInventoryItem(Chasis chasis,WeaponChasis wChasis, string name, int quantity, int damage)
+	public DatabaseInventoryItem(Chasis chasis,WeaponChasis wChasis, string name, int quantity, int damage, int range)
 	{
 		Name = name;
 		MaxQuantity = quantity;
 		Damage = damage;
 		Chasis = chasis;
 		WChasis = wChasis;
+		Range = range;
+
 
 	}
 
-	public DatabaseInventoryItem(Chasis chasis, WeaponChasis wChasis, string name, int damage)
+	public DatabaseInventoryItem(Chasis chasis, WeaponChasis wChasis, string name, int damage, int range)
 	{
 		Name = name;
 		MaxQuantity = 1;
 		Damage = damage;
 		Chasis = chasis;
 		WChasis = wChasis;
-
+		Range = range;
 	}
 
 	public readonly string Name;
@@ -53,6 +55,7 @@ public class DatabaseInventoryItem
 	public readonly int Damage;
 	public readonly Chasis Chasis;
 	public readonly WeaponChasis WChasis;
+	public readonly int Range;
 
 	public bool Stackable
 	{
@@ -77,11 +80,11 @@ public static class GameDatabase
 
 	static GameDatabase()
 	{
-		AddItem(new DatabaseInventoryItem(Chasis.Arrow,WeaponChasis.Ammo, "Broken Arrow", quantity: 10, damage: 4));
-		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ammo, "Arrow", quantity: 12, damage: 7));
-		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ammo, "Enchanted Arrow", damage: 14));
-		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ranged, "Bow", damage: 14));
-		AddItem(new DatabaseInventoryItem(Chasis.Null, WeaponChasis.SingleHandMelee, "Sword", damage: 14));
+		AddItem(new DatabaseInventoryItem(Chasis.Arrow,WeaponChasis.Ammo, "Broken Arrow", quantity: 10, damage: 4,range: 0));
+		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ammo, "Arrow", quantity: 12, damage: 7,range: 0));
+		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ammo, "Enchanted Arrow", damage: 14, range: 0));
+		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ranged, "Bow", damage: 14, range: 20));
+		AddItem(new DatabaseInventoryItem(Chasis.Null, WeaponChasis.SingleHandMelee, "Sword", damage: 14, range: 2));
 	}
 
 	private static void AddItem(DatabaseInventoryItem item)

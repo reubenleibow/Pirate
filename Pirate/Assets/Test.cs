@@ -9,8 +9,10 @@ public class Test : MonoBehaviour {
 	void Start ()
 	{
 		this.GetComponent<Base_Character_Script>().AddItem("Broken Arrow", 10);
+		this.GetComponent<Base_Character_Script>().AddItem("Broken Arrow", 10);
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	
