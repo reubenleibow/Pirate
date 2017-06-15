@@ -141,6 +141,7 @@ public class Base_Character_Script : MonoBehaviour
 		if(Base_Ranged != null && DistanceEnemy > Base_Propeties.MinStartRanged)
 		{
 			CurrentWeaponChasis = WeaponChasis.Ranged;
+			CheackForAmmo();
 		}
 
 		ForceStop = x;
@@ -210,4 +211,62 @@ public class Base_Character_Script : MonoBehaviour
 
 		return leftOverQuantity > 0 ? leftOverQuantity : 0;
 	}
+
+	void CheackForAmmo()
+	{
+		var ammo = 0;
+
+		//Check ammo for current weapon
+		foreach (var cItem in Inventory)
+		{
+			var DataItem = GameDatabase.InventoryItems[cItem.Name];
+
+			if (DataItem.Chasis == Base_Ranged.Chasis)
+			{
+				ammo += cItem.Quantity;
+			}
+		}
+
+		if(ammo == 0)
+		{
+			//no ammo for current weapon;
+			FindRangedWeapon();
+		}
+
+	}
+
+	void FindRangedWeapon()
+	{
+		var ammo = 0;
+
+		foreach (var cItem in Inventory)
+		{
+			if (ammo == 0)
+			{
+				// Item of weapon
+				var DataItem = GameDatabase.InventoryItems[cItem.Name];
+
+				//picked ranged weapon
+				if (DataItem.Name != Base_Ranged.Name && DataItem.WChasis == WeaponChasis.Ranged)
+				{
+					//search for ammo for that item(DataItem = the picked item)
+					foreach (var ammoItem in Inventory)
+					{
+						var DataAmmo = GameDatabase.InventoryItems[ammoItem.Name];
+						//If of the same class(both arrow group) and if is ammo...
+						if (DataAmmo.Chasis == DataItem.Chasis && DataAmmo.WChasis == WeaponChasis.Ammo)
+						{
+							ammo += ammoItem.Quantity;
+						}
+					}
+					// if that item has ammo then make that the base weapon
+					if (ammo > 0)
+					{
+						Base_Ranged = DataItem;
+					}
+				}
+			}
+		}
+	}
 }
+

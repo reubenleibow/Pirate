@@ -7,7 +7,9 @@ public enum WeaponChasis
 	SingleHandMelee,
 	Ranged,
 	DoubleHandedWeapon,
-	Nothing
+	Nothing,
+	Ammo
+
 }
 
 public enum Chasis
@@ -19,7 +21,8 @@ public enum Chasis
 	Bow,
 	Gun,
 	Food,
-	Null
+	Null,
+	Arrow
 }
 
 // database items
@@ -74,10 +77,10 @@ public static class GameDatabase
 
 	static GameDatabase()
 	{
-		AddItem(new DatabaseInventoryItem(Chasis.Ammo,WeaponChasis.Nothing, "Broken Arrow", quantity: 10, damage: 4));
-		AddItem(new DatabaseInventoryItem(Chasis.Ammo, WeaponChasis.Nothing, "Arrow", quantity: 12, damage: 7));
-		AddItem(new DatabaseInventoryItem(Chasis.Ammo, WeaponChasis.Nothing, "Enchanted Arrow", damage: 14));
-		AddItem(new DatabaseInventoryItem(Chasis.Null, WeaponChasis.Ranged, "Bow", damage: 14));
+		AddItem(new DatabaseInventoryItem(Chasis.Arrow,WeaponChasis.Ammo, "Broken Arrow", quantity: 10, damage: 4));
+		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ammo, "Arrow", quantity: 12, damage: 7));
+		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ammo, "Enchanted Arrow", damage: 14));
+		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ranged, "Bow", damage: 14));
 		AddItem(new DatabaseInventoryItem(Chasis.Null, WeaponChasis.SingleHandMelee, "Sword", damage: 14));
 	}
 
