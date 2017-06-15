@@ -36,9 +36,13 @@ public class Base_Character_Script : MonoBehaviour
 	public List<Base_Character_Script> Enemies;
 	bool ForceStop = false;
 
-	//InventoryStuff
-	int Ammo = 0;
+	public int fastAmmo { get; private set; }
 
+	Items_Script CurrentMissile;
+
+	//InventoryStuff
+
+	float Timer = 1;
 
 	public GameObject Core_Character
 	{
@@ -57,6 +61,8 @@ public class Base_Character_Script : MonoBehaviour
 		//Test***********************
 		AddItem("Bow", 1);
 		AddItem("Sword", 1);
+
+		// set up battlefield
 		MainBattle_Script.System.AllCharacters.Add(this);
 		if (TeamSide == 1)
 		{
@@ -75,14 +81,15 @@ public class Base_Character_Script : MonoBehaviour
 
 		TeamSideList.Add(this);
 		PendingSideList.Add(this);
-
+		
 		foreach(var cItem in Inventory)
 		{
 			var explainedItem = GameDatabase.InventoryItems[cItem.Name];
 
 			if(explainedItem.WChasis == WeaponChasis.Ranged)
 			{
-				Base_Ranged = explainedItem;
+				//Base_Ranged = explainedItem;
+				FindRangedWeapon();
 			}
 
 			if (explainedItem.WChasis == WeaponChasis.SingleHandMelee || explainedItem.WChasis == WeaponChasis.DoubleHandedWeapon)
@@ -95,6 +102,9 @@ public class Base_Character_Script : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		//***********************************
+		Timer -= Time.deltaTime;
+
 		if (Dead)
 		{
 			return;
@@ -122,22 +132,38 @@ public class Base_Character_Script : MonoBehaviour
 
 		//is enemy in range?
 		InRange = DistanceEnemy <= Base_MaxRange;
+
 		//enemy in range
 		if (InRange)
 		{
-			//Attack();
+			if(CurrentMissile != null)
+			{
+				fastAmmo = CurrentMissile.Quantity;
+			}
+			// if (Eg: bow) is being used, 
+			if (CurrentWeaponChasis == WeaponChasis.Ranged && fastAmmo > 0)
+			{
+				//shoot every second
+				if(Timer <= 0)
+				{
+					fastAmmo--;
+				//	Attack();
+				}
+			}
+
+			if(fastAmmo == 0)
+			{
+
+			}
 
 			//when character must remain still
 			x = x || (CurrentWeaponChasis == WeaponChasis.Ranged || Dead);
 		}
-		if(DistanceEnemy < Base_Propeties.MinBowRange && CurrentWeaponChasis == WeaponChasis.Ranged)
+		if(DistanceEnemy < Base_Propeties.MinBowRange && CurrentWeaponChasis == WeaponChasis.Ranged && Base_Melee != null)
 		{
-			if(Base_Melee != null)
-			{
-				CurrentWeaponChasis = Base_Melee.WChasis;
-			}
+			CurrentWeaponChasis = Base_Melee.WChasis;
 		}
-		//aDD aMMO CHECK HERE********************************
+
 		if(Base_Ranged != null && DistanceEnemy > Base_Propeties.MinStartRanged)
 		{
 			CurrentWeaponChasis = WeaponChasis.Ranged;
@@ -151,6 +177,11 @@ public class Base_Character_Script : MonoBehaviour
 		{
 			NavMesh.Stop();
 			NavMesh.ResetPath();
+		}
+		//*************************************
+		if(Timer <= 0)
+		{
+			Timer = 1;
 		}
 	}
 
@@ -169,7 +200,7 @@ public class Base_Character_Script : MonoBehaviour
 		NavMesh.ResetPath();
 	}
 
-	int AddItem(string name, int quantity)
+	public int AddItem(string name, int quantity)
 	{
 		int leftOverQuantity = quantity;
 		var maxQty = GameDatabase.InventoryItems[name].MaxQuantity;
@@ -217,13 +248,27 @@ public class Base_Character_Script : MonoBehaviour
 		var ammo = 0;
 
 		//Check ammo for current weapon
-		foreach (var cItem in Inventory)
+		foreach (var cItem in Inventory.Where(q => q.Quantity > 0).ToArray())
 		{
 			var DataItem = GameDatabase.InventoryItems[cItem.Name];
 
-			if (DataItem.Chasis == Base_Ranged.Chasis)
+			// if same class and is ammo
+			if (DataItem.Chasis == Base_Ranged.Chasis && DataItem.WChasis == WeaponChasis.Ammo)
 			{
+				// if the chosen ammo matches the current missile, the set ammo to the right amount;
+				if(DataItem.Name == CurrentMissile.Name && fastAmmo > 0)
+				{
+					cItem.Quantity = fastAmmo;
+					fastAmmo = 0;
+				}
+
 				ammo += cItem.Quantity;
+				// if there is ammo in a pack then set current missile and fast ammo;
+				if(fastAmmo == 0 && ammo > 0)
+				{
+					CurrentMissile.Name = DataItem.Name;
+					fastAmmo = cItem.Quantity;
+				}
 			}
 		}
 
@@ -239,7 +284,7 @@ public class Base_Character_Script : MonoBehaviour
 	{
 		var ammo = 0;
 
-		foreach (var cItem in Inventory)
+		foreach (var cItem in Inventory.ToArray())
 		{
 			if (ammo == 0)
 			{
@@ -250,13 +295,27 @@ public class Base_Character_Script : MonoBehaviour
 				if (DataItem.Name != Base_Ranged.Name && DataItem.WChasis == WeaponChasis.Ranged)
 				{
 					//search for ammo for that item(DataItem = the picked item)
-					foreach (var ammoItem in Inventory)
+					foreach (var ammoItem in Inventory.ToArray())
 					{
 						var DataAmmo = GameDatabase.InventoryItems[ammoItem.Name];
+
 						//If of the same class(both arrow group) and if is ammo...
 						if (DataAmmo.Chasis == DataItem.Chasis && DataAmmo.WChasis == WeaponChasis.Ammo)
 						{
-							ammo += ammoItem.Quantity;
+							if (DataAmmo.Name == CurrentMissile.Name && fastAmmo > 0)
+							{
+								ammoItem.Quantity = fastAmmo;
+								fastAmmo = 0;
+							}
+
+							ammo += cItem.Quantity;
+
+							// if there is ammo in a pack then set current missile and fast ammo;
+							if (fastAmmo == 0 && ammo > 0)
+							{
+								CurrentMissile.Name = DataAmmo.Name;
+								fastAmmo = ammoItem.Quantity;
+							}
 						}
 					}
 					// if that item has ammo then make that the base weapon
@@ -266,6 +325,12 @@ public class Base_Character_Script : MonoBehaviour
 					}
 				}
 			}
+		}
+
+		if(ammo == 0)
+		{
+			Base_Ranged = null;
+			CurrentWeaponChasis = Base_Melee.WChasis;
 		}
 	}
 }
