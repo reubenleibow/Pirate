@@ -5,19 +5,23 @@ using System.Linq;
 
 public class Base_Character_Script : MonoBehaviour
 {
+	public bool playerControl = false;
+
 	private GameObject coreCharacter;
 
 	float DifficaultyModifier = 1;
 
-	int Base_Health = 100;
-	DatabaseInventoryItem Base_Ranged = null;
-	DatabaseInventoryItem Base_Melee;
+	public int Base_Health = 100;
+	public DatabaseInventoryItem Base_Ranged = null;
+	public DatabaseInventoryItem Base_Melee;
 	bool Base_HorseBack = false;
 	float Base_Speed = 10;
 	int Base_MaxRange = 20;
 	string Base_Faction;
 	public int Base_Kills = 0;
 	List<Items_Script> Inventory = new List<Items_Script>(GameDatabase.MaxInventorySize);
+
+	public Horse_Script MountedHorse;
 
 	// load the properties
 	characterProperties Base_Propeties = new characterProperties();
@@ -46,6 +50,9 @@ public class Base_Character_Script : MonoBehaviour
 	public int TestRange;
 
 	bool Scan = true;
+	
+	//controls variables
+
 
 	public GameObject Core_Character
 	{
@@ -53,10 +60,13 @@ public class Base_Character_Script : MonoBehaviour
 		set { coreCharacter = value; }
 	}
 
-	private NavMeshAgent NavMesh
-	{
-		get { return Core_Character.GetComponent<NavMeshAgent>(); }
-	}
+	//private NavMeshAgent NavMesh
+	//{
+	//	get { return Core_Character.GetComponent<NavMeshAgent>(); }
+	//}
+
+	private NavMeshAgent NavMesh;
+
 
 	// Use this for initialization
 	void Start()
@@ -100,15 +110,24 @@ public class Base_Character_Script : MonoBehaviour
 			{
 				Base_Ranged = explainedItem;
 				Base_MaxRange = Base_Ranged.Range;
-				//FindRangedWeapon();
 			}
-
-
 		}
 	}
 
 	// Update is called once per frame
 	void Update()
+	{
+		if (!playerControl)
+		{
+			HandleAiControl();
+		}
+		else
+		{
+			HandlePlayerControl();
+		}
+	}
+
+	void HandleAiControl()
 	{
 		Timer -= Time.deltaTime;
 		TestRange = Base_MaxRange;
@@ -120,15 +139,27 @@ public class Base_Character_Script : MonoBehaviour
 
 		bool InRange = false;
 
-		//work out dist from enemy
+		if (MountedHorse != null)
+		{
+			this.transform.position = MountedHorse.transform.position;
+			NavMesh = MountedHorse.GetComponent<NavMeshAgent>();
+			//this.GetComponent<NavMeshAgent>().enabled = false;
+		}
+		else
+		{
+			//this.GetComponent<NavMeshAgent>().enabled = true
+			NavMesh = this.GetComponent<NavMeshAgent>();
 
+		}
+
+		//work out dist from enemy
 		if (Enemy != null)
 		{
 			DistanceEnemy = Vector3.Distance(this.Core_Character.transform.position, Enemy.Core_Character.transform.position);
 			//test***************************
-			if(ForceStop == false && CurrentWeaponChasis != WeaponChasis.Ranged)
+			if (ForceStop == false && CurrentWeaponChasis != WeaponChasis.Ranged)
 			{
-				NavMesh.SetDestination(Enemy.transform.position);
+				MoveTo(Enemy.transform.position);
 			}
 		}
 		else
@@ -151,13 +182,14 @@ public class Base_Character_Script : MonoBehaviour
 				//shoot every second
 				if (Timer <= 0)
 				{
-					CurrentMissile.Quantity --;
+					CurrentMissile.Quantity--;
 					Scan = true;
-				//	Attack();
+					//	Attack();
 				}
 			}
 
-			if(fastAmmo == 0 && Base_Ranged != null && Scan == true)
+			// when no ammo is left, or all is used up.
+			if (fastAmmo == 0 && Scan == true && CurrentWeaponChasis == WeaponChasis.Ranged)
 			{
 				CheackForAmmo();
 				Scan = false;
@@ -192,13 +224,47 @@ public class Base_Character_Script : MonoBehaviour
 			NavMesh.ResetPath();
 		}
 		//*************************************
-		if(Timer <= 0)
+		if (Timer <= 0)
 		{
 			Timer = 0.5f;
 		}
-
 	}
 
+	void HandlePlayerControl()
+	{
+		//propeties that are not set and give error are set here....
+		if (NavMesh != null)
+		{
+			NavMesh.enabled = false;
+		}
+
+		var dt = Time.deltaTime;
+		var Cam = this.GetComponent<GodProperties>().MainCam;
+
+		Cam.transform.position = this.transform.position;
+
+		if (Input.GetKey("w"))
+		{
+			this.transform.Translate(Vector3.forward * 2*dt);
+		}
+
+		if (Input.GetKey("d"))
+		{
+			this.transform.Translate(Vector3.right * 2*dt);
+		}
+
+		if (Input.GetKey("a"))
+		{
+			this.transform.Translate(Vector3.right * -2*dt);
+		}
+
+		if (Input.GetKey("s"))
+		{
+			this.transform.Translate(Vector3.forward * -2*dt);
+		}
+
+		
+	}
 
 	void Attack()
 	{
@@ -290,13 +356,14 @@ public class Base_Character_Script : MonoBehaviour
 		if(ammo == 0)
 		{
 			//no ammo for current weapon;
-			//FindRangedWeapon();
+			FindRangedWeapon();
 		}
 
 	}
 
 	void FindRangedWeapon()
 	{
+		Debug.Log("Looking for gun, current is: " + Base_Ranged);
 		var ammo = 0;
 
 		foreach (var cItem in Inventory.ToArray())
@@ -326,7 +393,7 @@ public class Base_Character_Script : MonoBehaviour
 								}
 							}
 
-							ammo += cItem.Quantity;
+							ammo += ammoItem.Quantity;
 
 							// if there is ammo in a pack then set current missile and fast ammo;
 							if (fastAmmo == 0 && ammo > 0)
@@ -344,11 +411,24 @@ public class Base_Character_Script : MonoBehaviour
 				}
 			}
 		}
-
+		//if no weapon is found then switch to melee
 		if (ammo == 0 && Base_Melee != null)
 		{
+			Debug.Log("No other weapons");
 			Base_Ranged = null;
 			CurrentWeaponChasis = Base_Melee.WChasis;
+		}
+	}
+
+	void MoveTo(Vector3 position)
+	{
+		if(MountedHorse != null)
+		{
+			MountedHorse.GetComponent<NavMeshAgent>().SetDestination(position);
+		}
+		else
+		{
+			this.GetComponent<NavMeshAgent>().SetDestination(position);
 		}
 	}
 }

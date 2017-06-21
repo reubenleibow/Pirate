@@ -100,6 +100,25 @@ public class MainBattle_Script : MonoBehaviour
 			}
 
 			var target = enemyTargetFree ?? enemyTarget;
+
+			//test: if player is free from targeted
+			//if (enemyTargetFree != null)
+			//{
+			//	//	editingMan.Enemy = enemyTargetFree;
+			//	//	enemyTargetFree.targeted = true;
+			//	Debug.Log("NT");
+			//
+			//}
+			//
+			////test: if player is not free from targeted
+			//if (enemyTargetFree == null)
+			//{
+			//	//	editingMan.Enemy = enemyTarget;
+			//	//	enemyTarget.targeted = true;
+			//	Debug.Log("T");
+			//
+			//}
+
 			if (target != null)
 			{
 				editingMan.Enemy = target;
@@ -108,6 +127,8 @@ public class MainBattle_Script : MonoBehaviour
 			}
 
 			firstTeam.Remove(editingMan);
+
+			
 		}
 	}
 }
