@@ -179,12 +179,14 @@ public class Base_Character_Script : MonoBehaviour
 			// if (Eg: bow) is being used, 
 			if (CurrentWeaponChasis == WeaponChasis.Ranged && fastAmmo > 0)
 			{
+				//****************
+				this.transform.LookAt(Enemy.transform.position);
 				//shoot every second
 				if (Timer <= 0)
 				{
 					CurrentMissile.Quantity--;
 					Scan = true;
-					//	Attack();
+					FireMissile(CurrentMissile);
 				}
 			}
 
@@ -263,7 +265,16 @@ public class Base_Character_Script : MonoBehaviour
 			this.transform.Translate(Vector3.forward * -2*dt);
 		}
 
-		
+
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.lockState = CursorLockMode.None;
+		var h = Input.GetAxis("Mouse X");
+		var v = Input.GetAxis("Mouse Y");
+
+
+		Cam.transform.Rotate(-v, 0, 0);
+		this.transform.Rotate(0, h*2, 0);
+		Cam.transform.parent = this.transform;
 	}
 
 	void Attack()
@@ -430,6 +441,14 @@ public class Base_Character_Script : MonoBehaviour
 		{
 			this.GetComponent<NavMeshAgent>().SetDestination(position);
 		}
+	}
+
+	void FireMissile(Items_Script missleFired)
+	{
+		var dataItem = GameDatabase.InventoryItems[missleFired.Name];
+		//var arrow = System_Script.SystemScriptCode.ArrowPrefab;
+		var arrow = Resources.Load("Arrow_Missile") as GameObject;
+		var newMissile = Instantiate(arrow, this.transform.position, Quaternion.identity);
 	}
 }
 
