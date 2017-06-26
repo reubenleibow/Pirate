@@ -7,8 +7,8 @@ public enum WeaponChasis
 	SingleHandMelee,
 	Ranged,
 	DoubleHandedWeapon,
-	Nothing,
-	Ammo
+	Ammo,
+	Nothing
 
 }
 //grouping items eg: bow and arrow types will be under arrow

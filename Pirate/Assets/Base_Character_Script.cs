@@ -5,6 +5,7 @@ using System.Linq;
 
 public class Base_Character_Script : MonoBehaviour
 {
+
 	public bool playerControl = false;
 
 	private GameObject coreCharacter;
@@ -40,19 +41,25 @@ public class Base_Character_Script : MonoBehaviour
 	public List<Base_Character_Script> Enemies;
 	bool ForceStop = false;
 
+	//fast ammo = ammo for that slot selected(Eg: just the one budle)
 	public int fastAmmo = 0;
+	//all all ammo is for weapon(Eg: all arrows)
+	public int AllAmmo = 0;
 
 	public Items_Script CurrentMissile = new Items_Script();
 
 	//InventoryStuff
 
 	public float Timer = 0.5f;
-	public int TestRange;
-
+	//public int TestRange;
 	bool Scan = true;
-	
-	//controls variables
+	public int CurrentInventoryIndex = 0;
 
+
+	public Items_Script CurrentWeapon = new Items_Script();
+
+	//controls variables
+	public float scroll;
 
 	public GameObject Core_Character
 	{
@@ -71,9 +78,12 @@ public class Base_Character_Script : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+
+
 		//Test***********************
 		AddItem("Bow", 1);
 		AddItem("Sword", 1);
+
 
 		// set up battlefield
 		MainBattle_Script.System.AllCharacters.Add(this);
@@ -120,17 +130,21 @@ public class Base_Character_Script : MonoBehaviour
 		if (!playerControl)
 		{
 			HandleAiControl();
+			this.GetComponent<NavMeshAgent>().enabled = true;
 		}
 		else
 		{
 			HandlePlayerControl();
+			this.GetComponent<NavMeshAgent>().enabled = false;
 		}
+
+		// all affected=
 	}
 
 	void HandleAiControl()
 	{
 		Timer -= Time.deltaTime;
-		TestRange = Base_MaxRange;
+		//TestRange = Base_MaxRange;
 
 		if (Dead)
 		{
@@ -184,7 +198,6 @@ public class Base_Character_Script : MonoBehaviour
 				//shoot every second
 				if (Timer <= 0)
 				{
-					CurrentMissile.Quantity--;
 					Scan = true;
 					FireMissile(CurrentMissile);
 				}
@@ -206,12 +219,14 @@ public class Base_Character_Script : MonoBehaviour
 		{
 			CurrentWeaponChasis = Base_Melee.WChasis;
 			Base_MaxRange = Base_Melee.Range;
+			CurrentWeapon.Name = Base_Melee.Name;
 		}
 
 		// switch to ranged
 		if (Base_Ranged != null && DistanceEnemy > Base_Propeties.MinStartRanged)
 		{
 			CurrentWeaponChasis = Base_Ranged.WChasis;
+			CurrentWeapon.Name = Base_Ranged.Name;
 			Base_MaxRange = Base_Ranged.Range;
 			//CheackForAmmo();
 
@@ -229,6 +244,38 @@ public class Base_Character_Script : MonoBehaviour
 		if (Timer <= 0)
 		{
 			Timer = 0.5f;
+		}
+	}
+
+	//private void OnCollisionEnter(Collision collision)
+	//{
+	//	if (collision.gameObject.tag == "Missile")
+	//	{
+	//		var missile = collision.gameObject;
+	//		var missileScript = missile.GetComponent<Missile_Script>();
+	//
+	//		if (missileScript.TeamNumber != TeamSide)
+	//		{
+	//			Base_Health -= missile.GetComponent<Missile_Script>().damgage;
+	//			Destroy(collision.gameObject);
+	//		}
+	//
+	//	}
+	//
+	//}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.tag == "Missile")
+		{
+			var missile = other.gameObject;
+			var missileScript = missile.GetComponent<Missile_Script>();
+
+			if(missileScript.TeamNumber != TeamSide)
+			{
+				Base_Health -= missile.GetComponent<Missile_Script>().damgage;
+				Destroy(missile);
+			}
 		}
 	}
 
@@ -265,6 +312,15 @@ public class Base_Character_Script : MonoBehaviour
 			this.transform.Translate(Vector3.forward * -2*dt);
 		}
 
+		if(Input.GetMouseButtonDown(0) && AllAmmo > 0)
+		{
+			FireMissile(CurrentMissile);
+		}
+
+		if(fastAmmo <= 0 && AllAmmo > 0)
+		{
+			CheackForAmmo();
+		}
 
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.lockState = CursorLockMode.None;
@@ -275,6 +331,42 @@ public class Base_Character_Script : MonoBehaviour
 		Cam.transform.Rotate(-v, 0, 0);
 		this.transform.Rotate(0, h*2, 0);
 		Cam.transform.parent = this.transform;
+
+		//display ammo
+
+		//Scrolling control
+		if (Input.GetAxis("Mouse ScrollWheel") != 0)
+		{
+			scroll += Input.GetAxis("Mouse ScrollWheel");
+		}
+
+		//if (scroll > 0)
+		//{
+		//	scroll -= 0.05f;
+		//}
+
+		if (scroll < 0.1 && scroll > -0.1)
+		{
+			scroll = 0;
+		}
+
+		//if (scroll < 0)
+		//{
+		//	scroll += 0.05f;
+		//}
+
+		if (scroll >= 0.1)
+		{
+			ScrolledUp();
+			scroll = 0;
+		}
+
+		if (scroll <= -0.1)
+		{
+			ScrolledDown();
+			scroll = 0;
+		}
+
 	}
 
 	void Attack()
@@ -337,6 +429,9 @@ public class Base_Character_Script : MonoBehaviour
 	void CheackForAmmo()
 	{
 		var ammo = 0;
+		//player control ammo
+		AllAmmo = 0;
+
 
 		//Check ammo for current weapon
 		foreach (var cItem in Inventory.Where(q => q.Quantity > 0).ToArray())
@@ -347,6 +442,9 @@ public class Base_Character_Script : MonoBehaviour
 			// if same class and is ammo
 			if (DataItem.Chasis == Base_Ranged.Chasis && DataItem.WChasis == WeaponChasis.Ammo)
 			{
+				//add to ammo
+				AllAmmo += cItem.Quantity;
+
 				// if the chosen ammo matches the current missile, the set ammo to the right amount;
 				if(cItem.Name == CurrentMissile.Name && fastAmmo > 0)
 				{
@@ -364,7 +462,7 @@ public class Base_Character_Script : MonoBehaviour
 			}
 		}
 
-		if(ammo == 0)
+		if(ammo == 0 && playerControl == false)
 		{
 			//no ammo for current weapon;
 			FindRangedWeapon();
@@ -374,7 +472,6 @@ public class Base_Character_Script : MonoBehaviour
 
 	void FindRangedWeapon()
 	{
-		Debug.Log("Looking for gun, current is: " + Base_Ranged);
 		var ammo = 0;
 
 		foreach (var cItem in Inventory.ToArray())
@@ -446,9 +543,77 @@ public class Base_Character_Script : MonoBehaviour
 	void FireMissile(Items_Script missleFired)
 	{
 		var dataItem = GameDatabase.InventoryItems[missleFired.Name];
-		//var arrow = System_Script.SystemScriptCode.ArrowPrefab;
 		var arrow = Resources.Load("Arrow_Missile") as GameObject;
-		var newMissile = Instantiate(arrow, this.transform.position, Quaternion.identity);
+		//Fire a missile
+		var newMissile = Instantiate(arrow, this.transform.position, Quaternion.Euler(this.transform.eulerAngles)) as GameObject;
+
+		CurrentMissile.Quantity--;
+		newMissile.GetComponent<Missile_Script>().TeamNumber = TeamSide;
+
+		if(playerControl == true)
+		{
+			AllAmmo--;
+			fastAmmo--;
+		}
 	}
+
+	//for player control only
+	void ScrolledUp()
+	{
+		CurrentInventoryIndex++;
+
+		if(CurrentInventoryIndex > 3)
+		{
+			CurrentInventoryIndex = 0;
+		}
+		Debug.Log("UpScroll");
+
+		CurrentWeaponChange();
+
+	}
+
+	//for player control only
+	void ScrolledDown()
+	{
+		CurrentInventoryIndex--;
+
+		if (CurrentInventoryIndex < 0)
+		{
+			CurrentInventoryIndex = 3;
+		}
+
+		Debug.Log("DScroll");
+
+		CurrentWeaponChange();
+	}
+
+	//for player control only
+	void CurrentWeaponChange()
+	{
+		//var explainedItem = Inventory[CurrentInventoryIndex].Name
+
+		if (Inventory.Count >= CurrentInventoryIndex)
+		{
+			var CurrentItem = GameDatabase.InventoryItems[Inventory[CurrentInventoryIndex].Name];
+
+			//if the slot selected is a weapon then choose it
+			if (CurrentItem.WChasis != WeaponChasis.Ammo)
+			{
+				CurrentWeapon.Name = CurrentItem.Name;
+				CurrentWeaponChasis = CurrentItem.WChasis;
+
+				//if the selected item is ranged then look for ammo
+				if(CurrentItem.WChasis == WeaponChasis.Ranged)
+				{
+					CheackForAmmo();
+				}
+				else
+				{
+					AllAmmo = 0;
+				}
+			}
+		}
+	}
+
 }
 
