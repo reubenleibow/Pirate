@@ -6,5 +6,6 @@ using System.Collections;
 public class Items_Script
 {
 	public int Quantity = 0;
-	public string Name = "Nothing"; 
+	public string Name = "Nothing";
+	//public Chasis Chasis = Chasis.Null;
 }

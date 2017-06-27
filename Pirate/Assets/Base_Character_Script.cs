@@ -36,9 +36,9 @@ public class Base_Character_Script : MonoBehaviour
 	public bool Dead = false;
 	public WeaponChasis CurrentWeaponChasis = WeaponChasis.Nothing;
 
-	public List<Base_Character_Script> PendingSideList;
-	public List<Base_Character_Script> TeamSideList;
-	public List<Base_Character_Script> Enemies;
+	private List<Base_Character_Script> PendingSideList;
+	private List<Base_Character_Script> TeamSideList;
+	private List<Base_Character_Script> Enemies;
 	bool ForceStop = false;
 
 	//fast ammo = ammo for that slot selected(Eg: just the one budle)
@@ -49,7 +49,7 @@ public class Base_Character_Script : MonoBehaviour
 	public Items_Script CurrentMissile = new Items_Script();
 
 	//InventoryStuff
-
+	public bool GotUsablePrimaryWeapon = false;
 	public float Timer = 0.5f;
 	//public int TestRange;
 	bool Scan = true;
@@ -122,11 +122,14 @@ public class Base_Character_Script : MonoBehaviour
 				Base_MaxRange = Base_Ranged.Range;
 			}
 		}
+
+		CheckForAnyWeapon();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+
 		if (!playerControl)
 		{
 			HandleAiControl();
@@ -139,6 +142,11 @@ public class Base_Character_Script : MonoBehaviour
 		}
 
 		// all affected=
+		if (MountedHorse != null)
+		{
+			this.GetComponent<NavMeshAgent>().enabled = false;
+			this.GetComponent<Rigidbody>().isKinematic = true;
+		}
 	}
 
 	void HandleAiControl()
@@ -423,6 +431,7 @@ public class Base_Character_Script : MonoBehaviour
 			leftOverQuantity -= maxQty;
 		}
 
+		CheckForAnyWeapon();
 		return leftOverQuantity > 0 ? leftOverQuantity : 0;
 	}
 
@@ -557,19 +566,74 @@ public class Base_Character_Script : MonoBehaviour
 		}
 	}
 
+	void CheckForAnyWeapon()
+	{
+		var GotMelee = false;
+		var GotRanged = false;
+		//var MeleeWeapon = new Items_Script();
+		//check for any usable weapon, If ranged then check to see if it has ammo, else not usable
+
+		foreach(var cItem in Inventory)
+		{
+			var ExplainedItem = GameDatabase.InventoryItems[cItem.Name];
+
+			if (ExplainedItem.WChasis == WeaponChasis.DoubleHandedWeapon || ExplainedItem.WChasis == WeaponChasis.SingleHandMelee)
+			{
+				//A melle Item is avaliable
+				//MeleeWeapon = cItem;
+				GotMelee = true;
+			}
+
+			//check for ranged weapons
+			if (ExplainedItem.WChasis == WeaponChasis.Ranged)
+			{
+				foreach(var cAmmo in Inventory)
+				{
+					var ExplainedAmmo = GameDatabase.InventoryItems[cAmmo.Name];
+					Debug.Log("The Check: "+ ExplainedAmmo.Name + ", Chasis: " + ExplainedAmmo.Chasis + " ,WChasis: " + ExplainedAmmo.WChasis);
+					//If the current checked item has ammo then there is a possible use of a ranged weapon
+					if(ExplainedAmmo.Chasis == ExplainedItem.Chasis && ExplainedAmmo.WChasis == WeaponChasis.Ammo)
+					{
+						GotRanged = true;
+					}
+				}
+			}
+		}
+
+		//GotMelee == true, therefore possible ranged.
+		//GotRanged == true, therefore there is a possible ranged weapon to use.
+
+		if (GotMelee == false && GotRanged == false)
+		{
+			GotUsablePrimaryWeapon = false;
+		}
+
+		if (GotMelee == true || GotRanged == true)
+		{
+			GotUsablePrimaryWeapon = true;
+		}
+	}
+
 	//for player control only
 	void ScrolledUp()
 	{
 		CurrentInventoryIndex++;
 
-		if(CurrentInventoryIndex > 3)
+		if(CurrentInventoryIndex > Inventory.Count)
 		{
 			CurrentInventoryIndex = 0;
 		}
-		Debug.Log("UpScroll");
+
+		var ExplainedItem = GameDatabase.InventoryItems[Inventory[CurrentInventoryIndex].Name];
+
+
+		//skip over non-weapon items by recalling the function
+		if(ExplainedItem.WChasis == WeaponChasis.Ammo || ExplainedItem.WChasis == WeaponChasis.Nothing)
+		{
+			ScrolledUp();
+		}
 
 		CurrentWeaponChange();
-
 	}
 
 	//for player control only
@@ -579,10 +643,15 @@ public class Base_Character_Script : MonoBehaviour
 
 		if (CurrentInventoryIndex < 0)
 		{
-			CurrentInventoryIndex = 3;
+			CurrentInventoryIndex = Inventory.Count;
 		}
 
-		Debug.Log("DScroll");
+		var ExplainedItem = GameDatabase.InventoryItems[Inventory[CurrentInventoryIndex].Name];
+
+		if (ExplainedItem.WChasis == WeaponChasis.Ammo || ExplainedItem.WChasis == WeaponChasis.Nothing)
+		{
+			ScrolledDown();
+		}
 
 		CurrentWeaponChange();
 	}
