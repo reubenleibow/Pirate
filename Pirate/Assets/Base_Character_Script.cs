@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Base_Character_Script : MonoBehaviour
 {
@@ -78,7 +79,6 @@ public class Base_Character_Script : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-
 
 		//Test***********************
 		AddItem("Bow", 1);
@@ -289,6 +289,10 @@ public class Base_Character_Script : MonoBehaviour
 
 	void HandlePlayerControl()
 	{
+		var text = GameObject.Find("Text");
+
+		text.GetComponent<Text>().text = AllAmmo.ToString();
+
 		//propeties that are not set and give error are set here....
 		if (NavMesh != null)
 		{
@@ -320,6 +324,11 @@ public class Base_Character_Script : MonoBehaviour
 			this.transform.Translate(Vector3.forward * -2*dt);
 		}
 
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			this.GetComponent<Rigidbody>().velocity = new Vector3(0,4,0);
+		}
+
 		if(Input.GetMouseButtonDown(0) && AllAmmo > 0)
 		{
 			FireMissile(CurrentMissile);
@@ -343,38 +352,22 @@ public class Base_Character_Script : MonoBehaviour
 		//display ammo
 
 		//Scrolling control
-		if (Input.GetAxis("Mouse ScrollWheel") != 0)
+		if (Input.GetAxisRaw("Mouse ScrollWheel") != 0 && GotUsablePrimaryWeapon == true)
 		{
 			scroll += Input.GetAxis("Mouse ScrollWheel");
 		}
 
-		//if (scroll > 0)
-		//{
-		//	scroll -= 0.05f;
-		//}
-
-		if (scroll < 0.1 && scroll > -0.1)
-		{
-			scroll = 0;
-		}
-
-		//if (scroll < 0)
-		//{
-		//	scroll += 0.05f;
-		//}
-
-		if (scroll >= 0.1)
+		if (scroll >= 1)
 		{
 			ScrolledUp();
 			scroll = 0;
 		}
 
-		if (scroll <= -0.1)
+		if (scroll <= -1)
 		{
 			ScrolledDown();
 			scroll = 0;
 		}
-
 	}
 
 	void Attack()
@@ -455,7 +448,7 @@ public class Base_Character_Script : MonoBehaviour
 				AllAmmo += cItem.Quantity;
 
 				// if the chosen ammo matches the current missile, the set ammo to the right amount;
-				if(cItem.Name == CurrentMissile.Name && fastAmmo > 0)
+				if(cItem.Name == CurrentMissile.Name && fastAmmo > 0 && (cItem.Quantity + fastAmmo) < DataItem.MaxQuantity)
 				{
 					cItem.Quantity = fastAmmo;
 					fastAmmo = 0;
@@ -564,37 +557,45 @@ public class Base_Character_Script : MonoBehaviour
 			AllAmmo--;
 			fastAmmo--;
 		}
+
+		if(playerControl == true)
+		{
+			newMissile.transform.rotation = Quaternion.Euler(this.GetComponent<GodProperties>().MainCam.transform.eulerAngles);
+		}
 	}
 
+	// only does checking
 	void CheckForAnyWeapon()
 	{
 		var GotMelee = false;
 		var GotRanged = false;
 		//var MeleeWeapon = new Items_Script();
 		//check for any usable weapon, If ranged then check to see if it has ammo, else not usable
-
-		foreach(var cItem in Inventory)
+		if(Inventory.Count > 0)
 		{
-			var ExplainedItem = GameDatabase.InventoryItems[cItem.Name];
-
-			if (ExplainedItem.WChasis == WeaponChasis.DoubleHandedWeapon || ExplainedItem.WChasis == WeaponChasis.SingleHandMelee)
+			foreach (var cItem in Inventory.ToArray())
 			{
-				//A melle Item is avaliable
-				//MeleeWeapon = cItem;
-				GotMelee = true;
-			}
+				var ExplainedItem = GameDatabase.InventoryItems[cItem.Name];
 
-			//check for ranged weapons
-			if (ExplainedItem.WChasis == WeaponChasis.Ranged)
-			{
-				foreach(var cAmmo in Inventory)
+				if (ExplainedItem.WChasis == WeaponChasis.DoubleHandedWeapon || ExplainedItem.WChasis == WeaponChasis.SingleHandMelee)
 				{
-					var ExplainedAmmo = GameDatabase.InventoryItems[cAmmo.Name];
-					Debug.Log("The Check: "+ ExplainedAmmo.Name + ", Chasis: " + ExplainedAmmo.Chasis + " ,WChasis: " + ExplainedAmmo.WChasis);
-					//If the current checked item has ammo then there is a possible use of a ranged weapon
-					if(ExplainedAmmo.Chasis == ExplainedItem.Chasis && ExplainedAmmo.WChasis == WeaponChasis.Ammo)
+					//A melle Item is avaliable
+					//MeleeWeapon = cItem;
+					GotMelee = true;
+				}
+
+				//check for ranged weapons
+				if (ExplainedItem.WChasis == WeaponChasis.Ranged)
+				{
+					foreach (var cAmmo in Inventory.ToArray())
 					{
-						GotRanged = true;
+						var ExplainedAmmo = GameDatabase.InventoryItems[cAmmo.Name];
+						Debug.Log("The Check: " + ExplainedAmmo.Name + ", Chasis: " + ExplainedAmmo.Chasis + " ,WChasis: " + ExplainedAmmo.WChasis);
+						//If the current checked item has ammo then there is a possible use of a ranged weapon
+						if (ExplainedAmmo.Chasis == ExplainedItem.Chasis && ExplainedAmmo.WChasis == WeaponChasis.Ammo)
+						{
+							GotRanged = true;
+						}
 					}
 				}
 			}
@@ -660,6 +661,8 @@ public class Base_Character_Script : MonoBehaviour
 	void CurrentWeaponChange()
 	{
 		//var explainedItem = Inventory[CurrentInventoryIndex].Name
+		var hud = GameObject.Find("Hud");
+		var text = GameObject.Find("Text");
 
 		if (Inventory.Count >= CurrentInventoryIndex)
 		{
@@ -671,8 +674,27 @@ public class Base_Character_Script : MonoBehaviour
 				CurrentWeapon.Name = CurrentItem.Name;
 				CurrentWeaponChasis = CurrentItem.WChasis;
 
+				if (playerControl == true)
+				{
+					if (CurrentItem.Chasis == Chasis.Arrow)
+					{
+						var image = Resources.Load("Arrow_Sprite") as Texture2D;
+						hud.GetComponent<Image>().sprite = Sprite.Create(image, new Rect(0,0, image.width, image.height), Vector2.zero);
+
+						text.GetComponent<Text>().enabled = true;
+					}
+
+					if (CurrentItem.Chasis == Chasis.SingleHandWeapon)
+					{
+						var image = Resources.Load("Sword_Sprite") as Texture2D;
+						hud.GetComponent<Image>().sprite = Sprite.Create(image, new Rect(0, 0, image.width, image.height), Vector2.zero);
+
+						text.GetComponent<Text>().enabled = false;
+					}
+				}
+
 				//if the selected item is ranged then look for ammo
-				if(CurrentItem.WChasis == WeaponChasis.Ranged)
+				if (CurrentItem.WChasis == WeaponChasis.Ranged)
 				{
 					CheackForAmmo();
 				}

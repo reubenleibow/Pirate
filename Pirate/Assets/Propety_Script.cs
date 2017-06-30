@@ -84,7 +84,7 @@ public static class GameDatabase
 		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ammo, "Arrow", quantity: 12, damage: 7,range: 0));
 		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ammo, "Enchanted Arrow", damage: 14, range: 0));
 		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ranged, "Bow", damage: 14, range: 20));
-		AddItem(new DatabaseInventoryItem(Chasis.Null, WeaponChasis.SingleHandMelee, "Sword", damage: 14, range: 2));
+		AddItem(new DatabaseInventoryItem(Chasis.SingleHandWeapon, WeaponChasis.SingleHandMelee, "Sword", damage: 14, range: 2));
 	}
 
 	private static void AddItem(DatabaseInventoryItem item)
