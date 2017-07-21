@@ -9,6 +9,7 @@ public class Base_Character_Script : MonoBehaviour
 
 	public bool playerControl = false;
 	public bool GotAnimations = true;
+	public bool Inpending = true;
 	
 	private GameObject coreCharacter;
 
@@ -144,12 +145,13 @@ public class Base_Character_Script : MonoBehaviour
 		//Is moving
 		if (GotAnimations == true)
 		{
-			if (this.GetComponent<NavMeshAgent>().velocity.x != 0 || this.GetComponent<NavMeshAgent>().velocity.z != 0)
+			if ((this.GetComponent<NavMeshAgent>().velocity.x != 0 || this.GetComponent<NavMeshAgent>().velocity.z != 0))
 			{
-			//	this.GetComponent<Animation>().Play("Walking");
-			//	this.GetComponent<Animation>()["Walking"].speed = 2;
+				//this.GetComponent<Animation>().Play("Walking");
+				//this.GetComponent<Animation>()["Walking"].speed = 2;
 			}
 		}
+
 		if(Base_Health <= 0)
 		{
 			Dead = true;
@@ -181,6 +183,7 @@ public class Base_Character_Script : MonoBehaviour
 
 		if (Dead)
 		{
+			this.gameObject.SetActive(false);
 			return;
 		}
 
@@ -208,10 +211,18 @@ public class Base_Character_Script : MonoBehaviour
 			{
 				MoveTo(Enemy.transform.position);
 			}
+
+			if(Enemy.GetComponent<Base_Character_Script>().Dead == true && Inpending == false)
+			{
+				Enemy = null;
+				PendingSideList.Add(this);
+				Inpending = true;
+}
 		}
-		else
+		else if(Inpending == false)
 		{
 			PendingSideList.Add(this);
+			Inpending = true;
 		}
 
 		bool x = false;

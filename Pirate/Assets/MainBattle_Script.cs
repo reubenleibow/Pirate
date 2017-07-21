@@ -13,8 +13,9 @@ public class MainBattle_Script : MonoBehaviour
 	public readonly List<Base_Character_Script> AllCharacters;
 	public readonly List<Base_Character_Script> AllDeath;
 
+	// this line makes it so there is only ever one in the whole game
 	public static MainBattle_Script System { get; private set; }
-
+	//Just a fance extension could have doen: public readonly List<Base_Character_Script> Team1 = new List<Base_Character_Script>();
 	MainBattle_Script()
 	{
 		Team1 = new List<Base_Character_Script>();
@@ -45,7 +46,7 @@ public class MainBattle_Script : MonoBehaviour
 		{
 			SortPlayers(PendingTeam2, Team1);
 		}
-		//if there is a death
+		//if there is a death (Not sure If working)
 		if (AllDeath.Count > 0)
 		{
 			foreach (var death in AllDeath.ToArray())
@@ -90,7 +91,7 @@ public class MainBattle_Script : MonoBehaviour
 					shortDist = dist;
 					enemyTarget = secondMan;
 
-					//lock onto enemies that are not already targeted
+					//lock onto enemies that are NOT already targeted
 					if (secondMan.targeted == false)
 					{
 						shortDistNon = dist;
@@ -98,8 +99,20 @@ public class MainBattle_Script : MonoBehaviour
 					}
 				}
 			}
+			if(enemyTargetFree != null)
+			{
+				editingMan.Enemy = enemyTargetFree;
+				enemyTargetFree.targeted = true;
 
-			var target = enemyTargetFree ?? enemyTarget;
+			}
+
+			if(enemyTargetFree == null && enemyTarget != null)
+			{
+				editingMan.Enemy = enemyTarget;
+				enemyTarget.targeted = true;
+			}
+
+			//var target = enemyTargetFree ?? enemyTarget;
 
 			//test: if player is free from targeted
 			//if (enemyTargetFree != null)
@@ -119,16 +132,15 @@ public class MainBattle_Script : MonoBehaviour
 			//
 			//}
 
-			if (target != null)
-			{
-				editingMan.Enemy = target;
-				//set enemy to targeted
-				target.targeted = true;
-			}
-
+			//if (target != null)
+			//{
+			//	editingMan.Enemy = target;
+			//	//set enemy to targeted
+			//	target.targeted = true;
+			//}
+			editingMan.Inpending = false;
 			firstTeam.Remove(editingMan);
 
-			
 		}
 	}
 }
