@@ -18,6 +18,7 @@ public class Base_Character_Script : MonoBehaviour
 	public float Base_Health = 100;
 	public DatabaseInventoryItem Base_Ranged = null;
 	public DatabaseInventoryItem Base_Melee;
+
 	bool Base_HorseBack = false;
 	float Base_Speed = 10;
 	public int Base_MaxRange = 0;
@@ -329,6 +330,7 @@ public class Base_Character_Script : MonoBehaviour
 		}
 	}
 
+	//for player control only
 	void HandlePlayerControl()
 	{
 		var text = GameObject.Find("Text");
@@ -345,6 +347,7 @@ public class Base_Character_Script : MonoBehaviour
 		var Cam = this.GetComponent<GodProperties>().MainCam;
 
 		Cam.transform.position = this.transform.position;
+		Cam.transform.Translate(Vector3.up * 1.5f);
 
 		if (Input.GetKey("w"))
 		{
@@ -364,6 +367,11 @@ public class Base_Character_Script : MonoBehaviour
 		if (Input.GetKey("s"))
 		{
 			this.transform.Translate(Vector3.forward * -2*dt);
+		}
+
+		if(Input.GetKey("s") || Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("d"))
+		{
+			this.GetComponent<Animation>().Play("Walking");
 		}
 
 		if(Input.GetKeyDown(KeyCode.Space))
@@ -394,7 +402,7 @@ public class Base_Character_Script : MonoBehaviour
 		//display ammo
 
 		//Scrolling control
-		if (Input.GetAxisRaw("Mouse ScrollWheel") != 0 && GotUsablePrimaryWeapon == true)
+		if (Input.GetAxisRaw("Mouse ScrollWheel") != 0)//&& GotUsablePrimaryWeapon == true
 		{
 			scroll += Input.GetAxis("Mouse ScrollWheel");
 		}
@@ -690,23 +698,39 @@ public class Base_Character_Script : MonoBehaviour
 	//for player control only
 	void ScrolledUp()
 	{
-		CurrentInventoryIndex++;
+		CurrentInventoryIndex ++;
 
-		if(CurrentInventoryIndex > Inventory.Count)
+		if (CurrentInventoryIndex > Inventory.Count)
 		{
-			CurrentInventoryIndex = 0;
+			//keep index within limits
+			CurrentInventoryIndex = Inventory.Count;
 		}
 
-		var ExplainedItem = GameDatabase.InventoryItems[Inventory[CurrentInventoryIndex].Name];
-
-
-		//skip over non-weapon items by recalling the function
-		if(ExplainedItem.WChasis == WeaponChasis.Ammo || ExplainedItem.WChasis == WeaponChasis.Nothing)
+		if (CurrentInventoryIndex < Inventory.Count && Inventory.Count >0)
 		{
-			ScrolledUp();
+			//find what that item is
+			var ExplainedItem = GameDatabase.InventoryItems[Inventory[CurrentInventoryIndex].Name];
+
+			//skip over non-weapon items by recalling the function
+			if (ExplainedItem.WChasis == WeaponChasis.Ammo || ExplainedItem.WChasis == WeaponChasis.Nothing)
+			{
+				//not a weapon
+				ScrolledUp();
+			}
+			else
+			{
+				//If there is a weapon in this inventory then set current weapon to this item
+				CurrentWeapon.Name = ExplainedItem.Name;
+				CurrentWeaponChasis = ExplainedItem.WChasis;
+			}
+		}
+		else
+		{
+			CurrentWeaponChasis = WeaponChasis.HandToHand;
+			CurrentWeapon.Name = "HandToHand";
 		}
 
-		CurrentWeaponChange();
+		//CurrentWeaponChange();
 	}
 
 	//for player control only
@@ -716,65 +740,68 @@ public class Base_Character_Script : MonoBehaviour
 
 		if (CurrentInventoryIndex < 0)
 		{
-			CurrentInventoryIndex = Inventory.Count;
+			CurrentInventoryIndex = 0;
 		}
 
-		var ExplainedItem = GameDatabase.InventoryItems[Inventory[CurrentInventoryIndex].Name];
-
-		if (ExplainedItem.WChasis == WeaponChasis.Ammo || ExplainedItem.WChasis == WeaponChasis.Nothing)
+		if(CurrentInventoryIndex < Inventory.Count && Inventory.Count > 0)
 		{
-			ScrolledDown();
+			var ExplainedItem = GameDatabase.InventoryItems[Inventory[CurrentInventoryIndex].Name];
+
+			//skip over non-weapon items by recalling the function
+			if (ExplainedItem.WChasis == WeaponChasis.Ammo || ExplainedItem.WChasis == WeaponChasis.Nothing)
+			{
+				ScrolledDown();
+			}
+			else
+			{
+				//If there is a weapon in this inventory then set current weapon to this item
+				CurrentWeapon.Name = ExplainedItem.Name;
+				CurrentWeaponChasis = ExplainedItem.WChasis;
+			}
+		}
+		else
+		{
+			CurrentWeaponChasis = WeaponChasis.HandToHand;
+			CurrentWeapon.Name = "HandToHand";
 		}
 
-		CurrentWeaponChange();
+		//CurrentWeaponChange();
 	}
 
 	//for player control only
 	void CurrentWeaponChange()
 	{
-		//var explainedItem = Inventory[CurrentInventoryIndex].Name
 		var hud = GameObject.Find("Hud");
 		var text = GameObject.Find("Text");
+		var CurrentItem = GameDatabase.InventoryItems[CurrentWeapon.Name];
 
-		if (Inventory.Count >= CurrentInventoryIndex)
+		if (playerControl == true)
 		{
-			var CurrentItem = GameDatabase.InventoryItems[Inventory[CurrentInventoryIndex].Name];
-
-			//if the slot selected is a weapon then choose it
-			if (CurrentItem.WChasis != WeaponChasis.Ammo)
+			if (CurrentItem.Chasis == Chasis.Arrow)
 			{
-				CurrentWeapon.Name = CurrentItem.Name;
-				CurrentWeaponChasis = CurrentItem.WChasis;
+				var image = Resources.Load("Arrow_Sprite") as Texture2D;
+				hud.GetComponent<Image>().sprite = Sprite.Create(image, new Rect(0,0, image.width, image.height), Vector2.zero);
 
-				if (playerControl == true)
-				{
-					if (CurrentItem.Chasis == Chasis.Arrow)
-					{
-						var image = Resources.Load("Arrow_Sprite") as Texture2D;
-						hud.GetComponent<Image>().sprite = Sprite.Create(image, new Rect(0,0, image.width, image.height), Vector2.zero);
-
-						text.GetComponent<Text>().enabled = true;
-					}
-
-					if (CurrentItem.Chasis == Chasis.SingleHandWeapon)
-					{
-						var image = Resources.Load("Sword_Sprite") as Texture2D;
-						hud.GetComponent<Image>().sprite = Sprite.Create(image, new Rect(0, 0, image.width, image.height), Vector2.zero);
-
-						text.GetComponent<Text>().enabled = false;
-					}
-				}
-
-				//if the selected item is ranged then look for ammo
-				if (CurrentItem.WChasis == WeaponChasis.Ranged)
-				{
-					CheackForAmmo();
-				}
-				else
-				{
-					AllAmmo = 0;
-				}
+				text.GetComponent<Text>().enabled = true;
 			}
+
+			if (CurrentItem.Chasis == Chasis.SingleHandWeapon)
+			{
+				var image = Resources.Load("Sword_Sprite") as Texture2D;
+				hud.GetComponent<Image>().sprite = Sprite.Create(image, new Rect(0, 0, image.width, image.height), Vector2.zero);
+
+				text.GetComponent<Text>().enabled = false;
+			}
+		}
+
+		//if the selected item is ranged then look for ammo
+		if (CurrentItem.WChasis == WeaponChasis.Ranged)
+		{
+			CheackForAmmo();
+		}
+		else
+		{
+			AllAmmo = 0;
 		}
 	}
 
