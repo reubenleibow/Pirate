@@ -1,0 +1,1400 @@
+fileFormatVersion: 2
+guid: 888adc09dcefbd340af41af39dd6bbb4
+timeCreated: 1500594932
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: _null_
+    100002: Biped_rig
+    100004: Character_1
+    100006: Chest_FK_01_jnt
+    100008: Chest_FK_con_
+    100010: CINEMA_4D_Editor
+    100012: Head_00_jnt
+    100014: Head_01_jnt
+    100016: Head_con_
+    100018: Head_null
+    100020: Hip_FK_00_jnt
+    100022: Hip_FK_con_
+    100024: L_Arm_IK_con_
+    100026: L_Arm_IK_con__1
+    100028: L_Arm_IK_con__2
+    100030: L_Arm_IK_con__3
+    100032: L_Arm_IK_con__4
+    100034: L_Arm_IK_pole
+    100036: L_Arm_IK_pole_1
+    100038: L_Arm_IK_pole_2
+    100040: L_Foot_jnt
+    100042: L_Foot_jnt_Goal
+    100044: L_Foot_UpV
+    100046: L_Hand_goal
+    100048: L_Hand_null
+    100050: L_Heel_Rot
+    100052: L_Hip_jnt
+    100054: L_Hip_jnt_Pole
+    100056: L_IK_Arm_null
+    100058: L_IK_Collar_jnt
+    100060: L_IK_Collar_upv
+    100062: L_IK_Elbow_jnt
+    100064: L_IK_Hand_jnt
+    100066: L_IK_Shoulder_jnt
+    100068: L_Knee_jnt
+    100070: L_Leg_Foot_con_
+    100072: L_Leg_null
+    100074: L_Leg_pole
+    100076: L_Leg_pole_1
+    100078: L_Leg_pole_2
+    100080: L_Shoulder_goal
+    100082: L_Shoulder_IK_con_
+    100084: L_Toe_End_jnt
+    100086: L_Toe_End_jnt_Goal
+    100088: L_Toe_jnt
+    100090: L_Toe_jnt_Goal
+    100092: L_Toe_Rot
+    100094: L_Toe_UpV
+    100096: L_Toe_wiggle
+    100098: Left
+    100100: Master_con_
+    100102: Midd_FK_01_jnt
+    100104: Midd_FK_con_
+    100106: Neck_FK_02_jnt
+    100108: Neck_FK_con_
+    100110: //RootNode
+    100112: R_Arm_IK_con_
+    100114: R_Arm_IK_con__1
+    100116: R_Arm_IK_con__2
+    100118: R_Arm_IK_con__3
+    100120: R_Arm_IK_con__4
+    100122: R_Arm_IK_pole
+    100124: R_Arm_IK_pole_1
+    100126: R_Arm_IK_pole_2
+    100128: R_Foot_jnt
+    100130: R_Foot_jnt_Goal
+    100132: R_Foot_UpV
+    100134: R_Hand_goal
+    100136: R_Hand_null
+    100138: R_Heel_Rot
+    100140: R_Hip_jnt
+    100142: R_Hip_jnt_Pole
+    100144: R_IK_Arm_null
+    100146: R_IK_Collar_jnt
+    100148: R_IK_Collar_upv
+    100150: R_IK_Elbow_jnt
+    100152: R_IK_Hand_jnt
+    100154: R_IK_Shoulder_jnt
+    100156: R_Knee_jnt
+    100158: R_Leg_Foot_con_
+    100160: R_Leg_null
+    100162: R_Leg_pole
+    100164: R_Leg_pole_1
+    100166: R_Leg_pole_2
+    100168: R_Shoulder_goal
+    100170: R_Shoulder_IK_con_
+    100172: R_Toe_End_jnt
+    100174: R_Toe_End_jnt_Goal
+    100176: R_Toe_jnt
+    100178: R_Toe_jnt_Goal
+    100180: R_Toe_Rot
+    100182: R_Toe_UpV
+    100184: R_Toe_wiggle
+    100186: Right
+    100188: Root_null_jnt
+    100190: Spine_FK_null
+    100192: Spinetip_FK_03_jnt
+    100194: Torso_con_
+    400000: _null_
+    400002: Biped_rig
+    400004: Character_1
+    400006: Chest_FK_01_jnt
+    400008: Chest_FK_con_
+    400010: CINEMA_4D_Editor
+    400012: Head_00_jnt
+    400014: Head_01_jnt
+    400016: Head_con_
+    400018: Head_null
+    400020: Hip_FK_00_jnt
+    400022: Hip_FK_con_
+    400024: L_Arm_IK_con_
+    400026: L_Arm_IK_con__1
+    400028: L_Arm_IK_con__2
+    400030: L_Arm_IK_con__3
+    400032: L_Arm_IK_con__4
+    400034: L_Arm_IK_pole
+    400036: L_Arm_IK_pole_1
+    400038: L_Arm_IK_pole_2
+    400040: L_Foot_jnt
+    400042: L_Foot_jnt_Goal
+    400044: L_Foot_UpV
+    400046: L_Hand_goal
+    400048: L_Hand_null
+    400050: L_Heel_Rot
+    400052: L_Hip_jnt
+    400054: L_Hip_jnt_Pole
+    400056: L_IK_Arm_null
+    400058: L_IK_Collar_jnt
+    400060: L_IK_Collar_upv
+    400062: L_IK_Elbow_jnt
+    400064: L_IK_Hand_jnt
+    400066: L_IK_Shoulder_jnt
+    400068: L_Knee_jnt
+    400070: L_Leg_Foot_con_
+    400072: L_Leg_null
+    400074: L_Leg_pole
+    400076: L_Leg_pole_1
+    400078: L_Leg_pole_2
+    400080: L_Shoulder_goal
+    400082: L_Shoulder_IK_con_
+    400084: L_Toe_End_jnt
+    400086: L_Toe_End_jnt_Goal
+    400088: L_Toe_jnt
+    400090: L_Toe_jnt_Goal
+    400092: L_Toe_Rot
+    400094: L_Toe_UpV
+    400096: L_Toe_wiggle
+    400098: Left
+    400100: Master_con_
+    400102: Midd_FK_01_jnt
+    400104: Midd_FK_con_
+    400106: Neck_FK_02_jnt
+    400108: Neck_FK_con_
+    400110: //RootNode
+    400112: R_Arm_IK_con_
+    400114: R_Arm_IK_con__1
+    400116: R_Arm_IK_con__2
+    400118: R_Arm_IK_con__3
+    400120: R_Arm_IK_con__4
+    400122: R_Arm_IK_pole
+    400124: R_Arm_IK_pole_1
+    400126: R_Arm_IK_pole_2
+    400128: R_Foot_jnt
+    400130: R_Foot_jnt_Goal
+    400132: R_Foot_UpV
+    400134: R_Hand_goal
+    400136: R_Hand_null
+    400138: R_Heel_Rot
+    400140: R_Hip_jnt
+    400142: R_Hip_jnt_Pole
+    400144: R_IK_Arm_null
+    400146: R_IK_Collar_jnt
+    400148: R_IK_Collar_upv
+    400150: R_IK_Elbow_jnt
+    400152: R_IK_Hand_jnt
+    400154: R_IK_Shoulder_jnt
+    400156: R_Knee_jnt
+    400158: R_Leg_Foot_con_
+    400160: R_Leg_null
+    400162: R_Leg_pole
+    400164: R_Leg_pole_1
+    400166: R_Leg_pole_2
+    400168: R_Shoulder_goal
+    400170: R_Shoulder_IK_con_
+    400172: R_Toe_End_jnt
+    400174: R_Toe_End_jnt_Goal
+    400176: R_Toe_jnt
+    400178: R_Toe_jnt_Goal
+    400180: R_Toe_Rot
+    400182: R_Toe_UpV
+    400184: R_Toe_wiggle
+    400186: Right
+    400188: Root_null_jnt
+    400190: Spine_FK_null
+    400192: Spinetip_FK_03_jnt
+    400194: Torso_con_
+    4300000: Left
+    4300002: Right
+    4300004: _null_
+    7400000: Walking
+    7400002: Idle
+    7400004: Attack
+    7400006: ShootAndRelode
+    7400008: PullOutArrow
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: _null_
+    13700002: Left
+    13700004: Right
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walking
+      takeName: Main
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: _null_
+        weight: 1
+      - path: Character_1
+        weight: 1
+      - path: Character_1/Biped_rig
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Head_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__3
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__4
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Hand_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole/L_Arm_IK_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole/L_Arm_IK_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal/L_Foot_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal/L_Foot_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle/L_Toe_End_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle/L_Toe_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__3
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__4
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Hand_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole/R_Arm_IK_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole/R_Arm_IK_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal/R_Foot_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal/R_Foot_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle/R_Toe_End_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle/R_Toe_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/L_Shoulder_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/L_Shoulder_IK_con_/L_Shoulder_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/Neck_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/R_Shoulder_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/R_Shoulder_IK_con_/R_Shoulder_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null/Head_00_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null/Head_00_jnt/Head_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt/L_IK_Hand_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt/L_IK_Hand_jnt/L_Hand_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_upv
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/Neck_FK_02_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/Neck_FK_02_jnt/Spinetip_FK_03_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt/R_IK_Hand_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt/R_IK_Hand_jnt/R_Hand_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_upv
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt/L_Toe_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt/L_Toe_jnt/L_Toe_End_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Hip_jnt_Pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Leg_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Leg_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt/R_Toe_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt/R_Toe_jnt/R_Toe_End_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Hip_jnt_Pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Leg_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Leg_pole_2
+        weight: 1
+      - path: CINEMA_4D_Editor
+        weight: 1
+      - path: Left
+        weight: 1
+      - path: Right
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Main
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: _null_
+        weight: 1
+      - path: Character_1
+        weight: 1
+      - path: Character_1/Biped_rig
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Head_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__3
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__4
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Hand_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole/L_Arm_IK_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole/L_Arm_IK_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal/L_Foot_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal/L_Foot_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle/L_Toe_End_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle/L_Toe_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__3
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__4
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Hand_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole/R_Arm_IK_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole/R_Arm_IK_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal/R_Foot_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal/R_Foot_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle/R_Toe_End_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle/R_Toe_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/L_Shoulder_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/L_Shoulder_IK_con_/L_Shoulder_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/Neck_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/R_Shoulder_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/R_Shoulder_IK_con_/R_Shoulder_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null/Head_00_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null/Head_00_jnt/Head_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt/L_IK_Hand_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt/L_IK_Hand_jnt/L_Hand_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_upv
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/Neck_FK_02_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/Neck_FK_02_jnt/Spinetip_FK_03_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt/R_IK_Hand_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt/R_IK_Hand_jnt/R_Hand_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_upv
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt/L_Toe_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt/L_Toe_jnt/L_Toe_End_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Hip_jnt_Pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Leg_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Leg_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt/R_Toe_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt/R_Toe_jnt/R_Toe_End_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Hip_jnt_Pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Leg_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Leg_pole_2
+        weight: 1
+      - path: CINEMA_4D_Editor
+        weight: 1
+      - path: Left
+        weight: 1
+      - path: Right
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Main
+      firstFrame: 44
+      lastFrame: 58
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: _null_
+        weight: 1
+      - path: Character_1
+        weight: 1
+      - path: Character_1/Biped_rig
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Head_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__3
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__4
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Hand_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole/L_Arm_IK_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole/L_Arm_IK_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal/L_Foot_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal/L_Foot_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle/L_Toe_End_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle/L_Toe_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__3
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__4
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Hand_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole/R_Arm_IK_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole/R_Arm_IK_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal/R_Foot_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal/R_Foot_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle/R_Toe_End_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle/R_Toe_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/L_Shoulder_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/L_Shoulder_IK_con_/L_Shoulder_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/Neck_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/R_Shoulder_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/R_Shoulder_IK_con_/R_Shoulder_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null/Head_00_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null/Head_00_jnt/Head_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt/L_IK_Hand_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt/L_IK_Hand_jnt/L_Hand_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_upv
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/Neck_FK_02_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/Neck_FK_02_jnt/Spinetip_FK_03_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt/R_IK_Hand_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt/R_IK_Hand_jnt/R_Hand_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_upv
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt/L_Toe_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt/L_Toe_jnt/L_Toe_End_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Hip_jnt_Pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Leg_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Leg_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt/R_Toe_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt/R_Toe_jnt/R_Toe_End_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Hip_jnt_Pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Leg_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Leg_pole_2
+        weight: 1
+      - path: CINEMA_4D_Editor
+        weight: 1
+      - path: Left
+        weight: 1
+      - path: Right
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ShootAndRelode
+      takeName: Main
+      firstFrame: 88
+      lastFrame: 93
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: _null_
+        weight: 1
+      - path: Character_1
+        weight: 1
+      - path: Character_1/Biped_rig
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Head_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__3
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__4
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Hand_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole/L_Arm_IK_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole/L_Arm_IK_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal/L_Foot_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal/L_Foot_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle/L_Toe_End_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle/L_Toe_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__3
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__4
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Hand_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole/R_Arm_IK_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole/R_Arm_IK_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal/R_Foot_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal/R_Foot_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle/R_Toe_End_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle/R_Toe_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/L_Shoulder_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/L_Shoulder_IK_con_/L_Shoulder_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/Neck_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/R_Shoulder_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/R_Shoulder_IK_con_/R_Shoulder_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null/Head_00_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null/Head_00_jnt/Head_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt/L_IK_Hand_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt/L_IK_Hand_jnt/L_Hand_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_upv
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/Neck_FK_02_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/Neck_FK_02_jnt/Spinetip_FK_03_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt/R_IK_Hand_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt/R_IK_Hand_jnt/R_Hand_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_upv
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt/L_Toe_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt/L_Toe_jnt/L_Toe_End_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Hip_jnt_Pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Leg_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Leg_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt/R_Toe_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt/R_Toe_jnt/R_Toe_End_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Hip_jnt_Pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Leg_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Leg_pole_2
+        weight: 1
+      - path: CINEMA_4D_Editor
+        weight: 1
+      - path: Left
+        weight: 1
+      - path: Right
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: PullOutArrow
+      takeName: Main
+      firstFrame: 60
+      lastFrame: 88
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: _null_
+        weight: 1
+      - path: Character_1
+        weight: 1
+      - path: Character_1/Biped_rig
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Head_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__3
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Arm_IK_con__4
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_con_/L_Hand_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole/L_Arm_IK_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Arm_IK_pole/L_Arm_IK_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal/L_Foot_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_jnt_Goal/L_Foot_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle/L_Toe_End_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/L_Leg_Foot_con_/L_Heel_Rot/L_Toe_Rot/L_Toe_wiggle/L_Toe_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__3
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Arm_IK_con__4
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_con_/R_Hand_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole/R_Arm_IK_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Arm_IK_pole/R_Arm_IK_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal/R_Foot_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_jnt_Goal/R_Foot_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle/R_Toe_End_jnt_Goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/R_Leg_Foot_con_/R_Heel_Rot/R_Toe_Rot/R_Toe_wiggle/R_Toe_UpV
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/L_Shoulder_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/L_Shoulder_IK_con_/L_Shoulder_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/Neck_FK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/R_Shoulder_IK_con_
+        weight: 1
+      - path: Character_1/Biped_rig/Master_con_/Torso_con_/Hip_FK_con_/Midd_FK_con_/Chest_FK_con_/R_Shoulder_IK_con_/R_Shoulder_goal
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null/Head_00_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Head_null/Head_00_jnt/Head_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt/L_IK_Hand_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_jnt/L_IK_Shoulder_jnt/L_IK_Elbow_jnt/L_IK_Hand_jnt/L_Hand_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/L_IK_Arm_null/L_IK_Collar_upv
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/Neck_FK_02_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/Neck_FK_02_jnt/Spinetip_FK_03_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt/R_IK_Hand_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_jnt/R_IK_Shoulder_jnt/R_IK_Elbow_jnt/R_IK_Hand_jnt/R_Hand_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/Hip_FK_00_jnt/Midd_FK_01_jnt/Chest_FK_01_jnt/R_IK_Arm_null/R_IK_Collar_upv
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt/L_Toe_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Hip_jnt/L_Knee_jnt/L_Foot_jnt/L_Toe_jnt/L_Toe_End_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Hip_jnt_Pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Leg_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/L_Leg_null/L_Leg_pole/L_Leg_pole_2
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt/R_Toe_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Hip_jnt/R_Knee_jnt/R_Foot_jnt/R_Toe_jnt/R_Toe_End_jnt
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Hip_jnt_Pole
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Leg_pole_1
+        weight: 1
+      - path: Character_1/Biped_rig/Root_null_jnt/Spine_FK_null/R_Leg_null/R_Leg_pole/R_Leg_pole_2
+        weight: 1
+      - path: CINEMA_4D_Editor
+        weight: 1
+      - path: Left
+        weight: 1
+      - path: Right
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

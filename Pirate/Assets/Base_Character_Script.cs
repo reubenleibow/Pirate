@@ -8,17 +8,18 @@ public class Base_Character_Script : MonoBehaviour
 {
 
 	public bool playerControl = false;
-
+	public bool GotAnimations = true;
+	
 	private GameObject coreCharacter;
 
 	float DifficaultyModifier = 1;
 
-	public int Base_Health = 100;
+	public float Base_Health = 100;
 	public DatabaseInventoryItem Base_Ranged = null;
 	public DatabaseInventoryItem Base_Melee;
 	bool Base_HorseBack = false;
 	float Base_Speed = 10;
-	int Base_MaxRange = 20;
+	public int Base_MaxRange = 0;
 	string Base_Faction;
 	public int Base_Kills = 0;
 	List<Items_Script> Inventory = new List<Items_Script>(GameDatabase.MaxInventorySize);
@@ -79,10 +80,11 @@ public class Base_Character_Script : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		//Check to see if it has all the animations
 
 		//Test***********************
 		AddItem("Bow", 1);
-		AddItem("Sword", 1);
+		//AddItem("Sword", 1);
 
 
 		// set up battlefield
@@ -108,12 +110,20 @@ public class Base_Character_Script : MonoBehaviour
 		foreach(var cItem in Inventory)
 		{
 			var explainedItem = GameDatabase.InventoryItems[cItem.Name];
+			var MeleeWeapon = false;
 
 			if (explainedItem.WChasis == WeaponChasis.SingleHandMelee || explainedItem.WChasis == WeaponChasis.DoubleHandedWeapon)
 			{
 				Base_Melee = explainedItem;
 				CurrentWeaponChasis = Base_Melee.WChasis;
 				Base_MaxRange = Base_Melee.Range;
+				MeleeWeapon = true;
+			}
+
+			if(MeleeWeapon == false)
+			{
+				Base_Melee = GameDatabase.InventoryItems["HandToHand"];
+				MeleeWeapon = true;
 			}
 
 			if (explainedItem.WChasis == WeaponChasis.Ranged)
@@ -129,6 +139,22 @@ public class Base_Character_Script : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		//ANIMATIONS
+		
+		//Is moving
+		if (GotAnimations == true)
+		{
+			if (this.GetComponent<NavMeshAgent>().velocity.x != 0 || this.GetComponent<NavMeshAgent>().velocity.z != 0)
+			{
+			//	this.GetComponent<Animation>().Play("Walking");
+			//	this.GetComponent<Animation>()["Walking"].speed = 2;
+			}
+		}
+		if(Base_Health <= 0)
+		{
+			Dead = true;
+		}
+		
 
 		if (!playerControl)
 		{
@@ -152,7 +178,6 @@ public class Base_Character_Script : MonoBehaviour
 	void HandleAiControl()
 	{
 		Timer -= Time.deltaTime;
-		//TestRange = Base_MaxRange;
 
 		if (Dead)
 		{
@@ -198,6 +223,8 @@ public class Base_Character_Script : MonoBehaviour
 		if (InRange)
 		{
 			fastAmmo = CurrentMissile.Quantity;
+			var IsMelee = CurrentWeaponChasis == WeaponChasis.HandToHand || CurrentWeaponChasis == WeaponChasis.DoubleHandedWeapon || CurrentWeaponChasis == WeaponChasis.SingleHandMelee;
+
 			// if (Eg: bow) is being used, 
 			if (CurrentWeaponChasis == WeaponChasis.Ranged && fastAmmo > 0)
 			{
@@ -216,6 +243,11 @@ public class Base_Character_Script : MonoBehaviour
 			{
 				CheackForAmmo();
 				Scan = false;
+			}
+
+			if(IsMelee)
+			{
+				Attack(Base_Melee.Damage);
 			}
 
 			//when character must remain still
@@ -237,7 +269,6 @@ public class Base_Character_Script : MonoBehaviour
 			CurrentWeapon.Name = Base_Ranged.Name;
 			Base_MaxRange = Base_Ranged.Range;
 			//CheackForAmmo();
-
 		}
 
 		ForceStop = x;
@@ -370,10 +401,12 @@ public class Base_Character_Script : MonoBehaviour
 		}
 	}
 
-	void Attack()
+	void Attack(int damage)
 	{
-		//var leftOver = AddItem("Broken Arrow", 20);
-		//ReturnToLeftSide("Broken Arrow", leftOver);
+		//Debug.Log("play animation");
+		PlayAnimation("Attack", 1);
+
+		Enemy.GetComponent<Base_Character_Script>().Base_Health -= damage * Time.deltaTime;
 	}
 
 	void KillCharacter()
@@ -526,7 +559,35 @@ public class Base_Character_Script : MonoBehaviour
 		{
 			Debug.Log("No other weapons");
 			Base_Ranged = null;
-			CurrentWeaponChasis = Base_Melee.WChasis;
+
+			FindMeleeWeapon();
+		}
+	}
+
+	void FindMeleeWeapon()
+	{
+		foreach(var i in Inventory)
+		{
+			var explainedItem = GameDatabase.InventoryItems[i.Name];
+			var MeleeFound = false;
+			var HandToHandWeapon = GameDatabase.InventoryItems["HandToHand"];
+
+			if (explainedItem.WChasis == WeaponChasis.DoubleHandedWeapon || explainedItem.WChasis == WeaponChasis.SingleHandMelee)
+			{
+				//a weapon is available
+				CurrentWeaponChasis = explainedItem.WChasis;
+				Base_Melee = explainedItem;
+				Base_MaxRange = explainedItem.Range;
+				MeleeFound = true;
+			}
+
+			if(MeleeFound == false)
+			{
+				CurrentWeaponChasis = HandToHandWeapon.WChasis;
+				Base_Melee = HandToHandWeapon;
+				Base_MaxRange = HandToHandWeapon.Range;
+				MeleeFound = true;
+			}
 		}
 	}
 
@@ -706,5 +767,12 @@ public class Base_Character_Script : MonoBehaviour
 		}
 	}
 
+	void PlayAnimation(string animation, float speed)
+	{
+		var PlayClip = this.GetComponent<Animation>();
+
+		PlayClip.Play(animation);
+		this.GetComponent<Animation>()[animation].speed = speed;
+	}
 }
 

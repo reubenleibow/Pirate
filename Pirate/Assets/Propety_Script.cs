@@ -8,7 +8,8 @@ public enum WeaponChasis
 	Ranged,
 	DoubleHandedWeapon,
 	Ammo,
-	Nothing
+	Nothing,
+	HandToHand
 
 }
 //grouping items eg: bow and arrow types will be under arrow
@@ -22,7 +23,8 @@ public enum Chasis
 	Gun,
 	Food,
 	Null,
-	Arrow
+	Arrow,
+	HandToHand
 }
 
 // database items
@@ -84,7 +86,8 @@ public static class GameDatabase
 		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ammo, "Arrow", quantity: 12, damage: 7,range: 0));
 		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ammo, "Enchanted Arrow", damage: 14, range: 0));
 		AddItem(new DatabaseInventoryItem(Chasis.Arrow, WeaponChasis.Ranged, "Bow", damage: 14, range: 20));
-		AddItem(new DatabaseInventoryItem(Chasis.SingleHandWeapon, WeaponChasis.SingleHandMelee, "Sword", damage: 14, range: 2));
+		AddItem(new DatabaseInventoryItem(Chasis.SingleHandWeapon, WeaponChasis.SingleHandMelee, "Sword", damage: 14, range: 4));
+		AddItem(new DatabaseInventoryItem(Chasis.HandToHand, WeaponChasis.HandToHand, "HandToHand", damage: 10, range: 2));
 	}
 
 	private static void AddItem(DatabaseInventoryItem item)
