@@ -27,6 +27,16 @@ public enum Chasis
 	HandToHand
 }
 
+public enum RangedWeaponsSates
+{
+	PullOutMissile,
+	Aiming,
+	Fire,
+	Release,
+	Nothing,
+	PutArrowAway
+}
+
 // database items
 public class DatabaseInventoryItem
 {

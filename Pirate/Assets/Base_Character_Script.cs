@@ -64,6 +64,9 @@ public class Base_Character_Script : MonoBehaviour
 
 	//controls variables
 	public float scroll;
+	public bool Fireable;
+
+	public RangedWeaponsSates RangedWeaponsSates = RangedWeaponsSates.Nothing;
 
 	public GameObject Core_Character
 	{
@@ -218,7 +221,10 @@ public class Base_Character_Script : MonoBehaviour
 				Enemy = null;
 				PendingSideList.Add(this);
 				Inpending = true;
-}
+			}
+
+			InRange = DistanceEnemy <= Base_MaxRange;
+
 		}
 		else if(Inpending == false)
 		{
@@ -229,10 +235,9 @@ public class Base_Character_Script : MonoBehaviour
 		bool x = false;
 
 		//is enemy in range?
-		InRange = DistanceEnemy <= Base_MaxRange;
 
 		//enemy in range
-		if (InRange)
+		if (InRange && Enemy != null)
 		{
 			fastAmmo = CurrentMissile.Quantity;
 			var IsMelee = CurrentWeaponChasis == WeaponChasis.HandToHand || CurrentWeaponChasis == WeaponChasis.DoubleHandedWeapon || CurrentWeaponChasis == WeaponChasis.SingleHandMelee;
@@ -259,7 +264,7 @@ public class Base_Character_Script : MonoBehaviour
 
 			if(IsMelee)
 			{
-				Attack(Base_Melee.Damage);
+				Engage(CurrentWeaponChasis,Base_Melee.Damage);
 			}
 
 			//when character must remain still
@@ -267,7 +272,7 @@ public class Base_Character_Script : MonoBehaviour
 		}
 
 		// switch to melee
-		if (DistanceEnemy < Base_Propeties.MinBowRange && CurrentWeaponChasis == WeaponChasis.Ranged && Base_Melee != null)
+		if (DistanceEnemy < Base_Propeties.MinBowRange && CurrentWeaponChasis == WeaponChasis.Ranged && Base_Melee != null && Enemy != null)
 		{
 			CurrentWeaponChasis = Base_Melee.WChasis;
 			Base_MaxRange = Base_Melee.Range;
@@ -275,7 +280,7 @@ public class Base_Character_Script : MonoBehaviour
 		}
 
 		// switch to ranged
-		if (Base_Ranged != null && DistanceEnemy > Base_Propeties.MinStartRanged)
+		if (Base_Ranged != null && DistanceEnemy > Base_Propeties.MinStartRanged && Enemy != null)
 		{
 			CurrentWeaponChasis = Base_Ranged.WChasis;
 			CurrentWeapon.Name = Base_Ranged.Name;
@@ -379,12 +384,38 @@ public class Base_Character_Script : MonoBehaviour
 			this.GetComponent<Rigidbody>().velocity = new Vector3(0,4,0);
 		}
 
-		if(Input.GetMouseButtonDown(0) && AllAmmo > 0)
+		if (Input.GetMouseButtonDown(0) && CurrentWeaponChasis != WeaponChasis.Ranged)
 		{
-			FireMissile(CurrentMissile);
+			Engage(CurrentWeaponChasis, Base_Melee.Damage);
 		}
 
-		if(fastAmmo <= 0 && AllAmmo > 0)
+		//Load up an arrow
+		if(Input.GetMouseButton(0) && CurrentWeaponChasis == WeaponChasis.Ranged && AllAmmo > 0 && RangedWeaponsSates == RangedWeaponsSates.Nothing)
+		{
+			PlayAnimation("PullOutArrow", 1);
+			RangedWeaponsSates = RangedWeaponsSates.PullOutMissile;
+		}
+		// pack arrow away
+		if (Input.GetMouseButtonDown(1) && (RangedWeaponsSates == RangedWeaponsSates.Aiming || RangedWeaponsSates == RangedWeaponsSates.PullOutMissile))
+		{
+			PlayAnimation("PullOutArrow", -1);
+			RangedWeaponsSates = RangedWeaponsSates.PutArrowAway;
+		}
+		//fire arrow
+		if(!Input.GetMouseButton(0) && CurrentWeaponChasis == WeaponChasis.Ranged && RangedWeaponsSates == RangedWeaponsSates.Aiming)
+		{
+			Engage(CurrentWeaponChasis, Base_Melee.Damage);
+			RangedWeaponsSates = RangedWeaponsSates.Release;
+			PlayAnimation("PullOutArrow", -1);
+		}
+		//firing before complete
+		if (Input.GetMouseButton(0) && CurrentWeaponChasis == WeaponChasis.Ranged && AllAmmo > 0 && RangedWeaponsSates == RangedWeaponsSates.Release)
+		{
+			PlayAnimation("ShootAndReload", 0.1f);
+			RangedWeaponsSates = RangedWeaponsSates.PullOutMissile;
+		}
+
+		if (fastAmmo <= 0 && AllAmmo > 0)
 		{
 			CheackForAmmo();
 		}
@@ -420,13 +451,26 @@ public class Base_Character_Script : MonoBehaviour
 		}
 	}
 
-	void Attack(int damage)
+	//All attack (player/Ai)
+	void Engage (WeaponChasis chasis,int damage)
 	{
-		//Debug.Log("play animation");
-		PlayAnimation("Attack", 1);
+		if(chasis == WeaponChasis.Ranged && AllAmmo > 0)
+		{
+			FireMissile(CurrentMissile);
+			PlayAnimation("PullOutArrow", 1);
+		}
 
-		Enemy.GetComponent<Base_Character_Script>().Base_Health -= damage * Time.deltaTime;
+		if (chasis == WeaponChasis.HandToHand || chasis == WeaponChasis.DoubleHandedWeapon || chasis == WeaponChasis.SingleHandMelee)
+		{
+			PlayAnimation("Attack", 1);
+		}
+
+		if (playerControl == false)
+		{
+			Enemy.GetComponent<Base_Character_Script>().Base_Health -= damage * Time.deltaTime;
+		}
 	}
+
 
 	void KillCharacter()
 	{
@@ -730,7 +774,7 @@ public class Base_Character_Script : MonoBehaviour
 			CurrentWeapon.Name = "HandToHand";
 		}
 
-		//CurrentWeaponChange();
+		CurrentWeaponChange();
 	}
 
 	//for player control only
@@ -738,12 +782,12 @@ public class Base_Character_Script : MonoBehaviour
 	{
 		CurrentInventoryIndex--;
 
-		if (CurrentInventoryIndex < 0)
+		if (CurrentInventoryIndex < -1)
 		{
-			CurrentInventoryIndex = 0;
+			CurrentInventoryIndex = -1;
 		}
 
-		if(CurrentInventoryIndex < Inventory.Count && Inventory.Count > 0)
+		if(CurrentInventoryIndex < Inventory.Count && Inventory.Count > 0 && CurrentInventoryIndex >= 0)
 		{
 			var ExplainedItem = GameDatabase.InventoryItems[Inventory[CurrentInventoryIndex].Name];
 
@@ -765,7 +809,7 @@ public class Base_Character_Script : MonoBehaviour
 			CurrentWeapon.Name = "HandToHand";
 		}
 
-		//CurrentWeaponChange();
+		CurrentWeaponChange();
 	}
 
 	//for player control only
@@ -792,6 +836,14 @@ public class Base_Character_Script : MonoBehaviour
 
 				text.GetComponent<Text>().enabled = false;
 			}
+
+			if(CurrentItem.WChasis == WeaponChasis.HandToHand)
+			{
+				var image = Resources.Load("Fists") as Texture2D;
+				hud.GetComponent<Image>().sprite = Sprite.Create(image, new Rect(0, 0, image.width, image.height), Vector3.zero);
+
+				text.GetComponent<Text>().enabled = false;
+			}
 		}
 
 		//if the selected item is ranged then look for ammo
@@ -811,6 +863,31 @@ public class Base_Character_Script : MonoBehaviour
 
 		PlayClip.Play(animation);
 		this.GetComponent<Animation>()[animation].speed = speed;
+
+		if(speed == -1)
+		{
+			this.GetComponent<Animation>()[animation].time = this.GetComponent<Animation>()[animation].length-0.1f;
+		}
+	}
+
+	void AnimationOver()
+	{
+		Fireable = true;
+
+		if(RangedWeaponsSates == RangedWeaponsSates.PullOutMissile)
+		{
+			RangedWeaponsSates = RangedWeaponsSates.Aiming;
+		}
+
+		if (RangedWeaponsSates == RangedWeaponsSates.PutArrowAway)
+		{
+			RangedWeaponsSates = RangedWeaponsSates.Nothing;
+		}
+
+		if (RangedWeaponsSates == RangedWeaponsSates.Release)
+		{
+			RangedWeaponsSates = RangedWeaponsSates.Nothing;
+		}
 	}
 }
 
