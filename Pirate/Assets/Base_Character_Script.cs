@@ -64,7 +64,6 @@ public class Base_Character_Script : MonoBehaviour
 
 	//controls variables
 	public float scroll;
-	public bool Fireable;
 
 	public RangedWeaponsSates RangedWeaponsSates = RangedWeaponsSates.Nothing;
 
@@ -89,6 +88,8 @@ public class Base_Character_Script : MonoBehaviour
 
 		//Test***********************
 		AddItem("Bow", 1);
+		AddItem("Broken Arrow", 10);
+		AddItem("Broken Arrow", 10);
 		//AddItem("Sword", 1);
 
 
@@ -247,11 +248,25 @@ public class Base_Character_Script : MonoBehaviour
 			{
 				//****************
 				this.transform.LookAt(Enemy.transform.position);
+
+				//if in range but has not pulled out the bow
+				if (RangedWeaponsSates == RangedWeaponsSates.Nothing)
+				{
+					TakeOutWeapon(CurrentWeaponChasis);
+				}
+
 				//shoot every second
 				if (Timer <= 0)
 				{
-					Scan = true;
-					FireMissile(CurrentMissile);
+					// fire a missile then play the animation of reloading
+					if (RangedWeaponsSates == RangedWeaponsSates.Aiming)
+					{
+						PlayAnimation("ShootAndReload", 0.1f);
+						RangedWeaponsSates = RangedWeaponsSates.PullOutMissile;
+
+						Scan = true;
+						FireMissile(CurrentMissile);
+					}
 				}
 			}
 
@@ -271,17 +286,21 @@ public class Base_Character_Script : MonoBehaviour
 			x = x || (CurrentWeaponChasis == WeaponChasis.Ranged || Dead);
 		}
 
-		// switch to melee
+		// switch to melee from ranged
 		if (DistanceEnemy < Base_Propeties.MinBowRange && CurrentWeaponChasis == WeaponChasis.Ranged && Base_Melee != null && Enemy != null)
 		{
+			PutWeaponAway(CurrentWeaponChasis);
+
 			CurrentWeaponChasis = Base_Melee.WChasis;
 			Base_MaxRange = Base_Melee.Range;
 			CurrentWeapon.Name = Base_Melee.Name;
 		}
 
 		// switch to ranged
-		if (Base_Ranged != null && DistanceEnemy > Base_Propeties.MinStartRanged && Enemy != null)
+		if (Base_Ranged != null && DistanceEnemy > Base_Propeties.MinStartRanged && Enemy != null && CurrentWeaponChasis != WeaponChasis.Ranged)
 		{
+			TakeOutWeapon(CurrentWeaponChasis);
+
 			CurrentWeaponChasis = Base_Ranged.WChasis;
 			CurrentWeapon.Name = Base_Ranged.Name;
 			Base_MaxRange = Base_Ranged.Range;
@@ -299,7 +318,7 @@ public class Base_Character_Script : MonoBehaviour
 		//*************************************
 		if (Timer <= 0)
 		{
-			Timer = 0.5f;
+			Timer = 1f;
 		}
 	}
 
@@ -617,12 +636,13 @@ public class Base_Character_Script : MonoBehaviour
 				}
 			}
 		}
-		//if no weapon is found then switch to melee
+		//if no ranged weapon is found then switch to melee
 		if (ammo == 0 && Base_Melee != null)
 		{
 			Debug.Log("No other weapons");
 			Base_Ranged = null;
 
+			PutWeaponAway(CurrentWeaponChasis);
 			FindMeleeWeapon();
 		}
 	}
@@ -643,8 +663,8 @@ public class Base_Character_Script : MonoBehaviour
 				Base_MaxRange = explainedItem.Range;
 				MeleeFound = true;
 			}
-
-			if(MeleeFound == false)
+			//If melee weapon is not found then switch to hand to hand
+			if (MeleeFound == false)
 			{
 				CurrentWeaponChasis = HandToHandWeapon.WChasis;
 				Base_Melee = HandToHandWeapon;
@@ -872,8 +892,6 @@ public class Base_Character_Script : MonoBehaviour
 
 	void AnimationOver()
 	{
-		Fireable = true;
-
 		if(RangedWeaponsSates == RangedWeaponsSates.PullOutMissile)
 		{
 			RangedWeaponsSates = RangedWeaponsSates.Aiming;
@@ -887,6 +905,26 @@ public class Base_Character_Script : MonoBehaviour
 		if (RangedWeaponsSates == RangedWeaponsSates.Release)
 		{
 			RangedWeaponsSates = RangedWeaponsSates.Nothing;
+		}
+	}
+
+	//called when switching weapons(basically putting a weapon in the pocket)
+	void PutWeaponAway(WeaponChasis chasis)
+	{
+		if(chasis == WeaponChasis.Ranged)
+		{
+			// pack arrow away
+			PlayAnimation("PullOutArrow", -1);
+			RangedWeaponsSates = RangedWeaponsSates.PutArrowAway;
+		}
+	}
+
+	void TakeOutWeapon(WeaponChasis chasis)
+	{
+		if (chasis == WeaponChasis.Ranged)
+		{
+			PlayAnimation("PullOutArrow", 1);
+			RangedWeaponsSates = RangedWeaponsSates.PullOutMissile;
 		}
 	}
 }
